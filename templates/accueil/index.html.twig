@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+      <link href="{{ asset('css/accueil.css') }}" type="text/css" rel="stylesheet" />
+    
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/accueil.js') }}"></script>
+{% endblock %}
+
+{% block title %}Accueil{% endblock %}
+
+
+
+{% block body %}
+
+
+  <!-- slider start -->
+  <div class="fnc-slider example-slider">
+    <div class="fnc-slider__slides">
+     <!-- slide start -->
+      <div class="fnc-slide m--blend-green m--active-slide">
+        <div class="fnc-slide__inner">
+          <div class="fnc-slide__mask">
+            <div class="fnc-slide__mask-inner"></div>
+          </div>
+          <div class="fnc-slide__content">
+            <h2 class="fnc-slide__heading">
+              <div class="fnc-slide__heading-line">
+                <span>GSB</span>
+              </div>
+              <div class="fnc-slide__heading-line">
+                <span>Galaxy Swiss Bourdin</span>
+              </div>
+            </h2>
+          </div>
+        </div>
+      </div>
+      <!-- slide end -->
+      <!-- slide start -->
+      <div class="fnc-slide m--blend-dark">
+        <div class="fnc-slide__inner">
+          <div class="fnc-slide__mask">
+            <div class="fnc-slide__mask-inner"></div>
+          </div>
+          <div class="fnc-slide__content">
+            <h2 class="fnc-slide__heading">
+              <div class="fnc-slide__heading-line">
+                <span> Visiteur</span>
+                <div>
+                <a href="{{ path( 'seConnecterVisiteur' ) }}"  class="button"> Compte Visiteur</a>
+                </div>
+              </div>
+            </h2>
+          </div>
+        </div>
+      </div>
+      <!-- slide end -->
+      <!-- slide start -->
+      <div class="fnc-slide m--blend-red">
+        <div class="fnc-slide__inner">
+          <div class="fnc-slide__mask">
+            <div class="fnc-slide__mask-inner"></div>
+          </div>
+          <div class="fnc-slide__content">
+            <h2 class="fnc-slide__heading">
+              <div class="fnc-slide__heading-line">
+                <span>Comptable</span>
+                <div>
+                <a href="#"  class="button"> Compte Comptable</a>
+                </div>
+            </h2>
+          </div>
+        </div>
+      </div>
+      <!-- slide end -->
+      
+    </div>
+    <nav class="fnc-nav">
+      <div class="fnc-nav__bgs">
+        <div class="fnc-nav__bg m--navbg-green m--active-nav-bg"></div>
+        <div class="fnc-nav__bg m--navbg-red"></div>
+        <div class="fnc-nav__bg m--navbg-blue"></div>
+      </div>
+      <div class="fnc-nav__controls">
+        <button class="fnc-nav__control">
+          GSB Frais
+          <span class="fnc-nav__control-progress"></span>
+        </button>
+        <button class="fnc-nav__control">
+          Visiteur
+          <span class="fnc-nav__control-progress"></span>
+        </button>
+        <button class="fnc-nav__control">
+          Comptable
+          <span class="fnc-nav__control-progress"></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+  
+    
+    
+
+
+{% endblock %}

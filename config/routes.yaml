@@ -1,0 +1,43 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+#Acceuil
+index:
+    path: /
+    controller: App\Controller\AccueilController::index
+
+#Se connecter compte visiteur
+seConnecterVisiteur:
+    path: /visiteur/seConnecterVisiteur
+    controller: App\Controller\VisiteurController::seConnecterVisiteur
+
+#Menu visiteur   
+menuV:
+    path: /visiteur/menu
+    controller: App\Controller\VisiteurController::visiteur
+    
+#Choix du mois
+choixMois:
+    path: /visiteur/ChoixMois
+    controller: App\Controller\VisiteurController::choixMois
+
+#Consulter
+consulter:
+    path: /visiteur/consulter
+    controller: App\Controller\VisiteurController::consulter
+    
+#Saisir fiche de Visiteur    
+saisir:
+    path: /visiteur/saisir
+    controller: App\Controller\VisiteurController::saisir
+    
+#Se connecter au compte comptable   
+#seConnecterC:
+#    path: /comptable/seConnecterC
+#    controller: App\Controller\ComptableController::seConnecterC
+    
+#Menu comptable  
+comptable:
+    path: /comptable/menu
+    controller: App\Controller\ComptableController::comptable
