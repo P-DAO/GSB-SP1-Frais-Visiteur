@@ -4,22 +4,22 @@
 
 #Acceuil
 index:
-    path: /
+    path: /accueil
     controller: App\Controller\AccueilController::index
 
 #Se connecter compte visiteur
 seConnecterVisiteur:
-    path: /visiteur/seConnecterVisiteur
+    path: /visiteur/Connexion
     controller: App\Controller\VisiteurController::seConnecterVisiteur
 
 #Se deconnecter compte visiteur
 seDeconnecterVisiteur:
-    path: /visiteur/seDeconnecterVisiteur
+    path: /visiteur/Deconnexion
     controller: App\Controller\VisiteurController::seDeconnecterVisiteur
 
 #Menu visiteur   
 CompteVisiteur:
-    path: /visiteur/CompteVisiteur
+    path: /visiteur/Compte
     controller: App\Controller\VisiteurController::visiteur
     
 #Choix du mois
@@ -39,10 +39,10 @@ saisir:
     
 #Se connecter au compte comptable   
 #seConnecterC:
-#    path: /comptable/seConnecterC
+#    path: /comptable/Connexion
 #    controller: App\Controller\ComptableController::seConnecterC
     
 #Menu comptable  
-comptable:
-    path: /comptable/menu
+CompteComptable:
+    path: /comptable/Compte
     controller: App\Controller\ComptableController::comptable
