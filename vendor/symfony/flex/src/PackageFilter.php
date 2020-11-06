@@ -12,6 +12,7 @@
 namespace Symfony\Flex;
 
 use Composer\IO\IOInterface;
+use Composer\Package\AliasPackage;
 use Composer\Package\PackageInterface;
 use Composer\Semver\Constraint\Constraint;
 use Composer\Semver\VersionParser;
@@ -54,20 +55,25 @@ class PackageFilter
         $oneSymfony = false;
         foreach ($data as $package) {
             $name = $package->getName();
-            $version = $package->getVersion();
+            $versions = [$package->getVersion()];
+            if ($package instanceof AliasPackage) {
+                $versions[] = $package->getAliasOf()->getVersion();
+            }
             if ('symfony/symfony' !== $name && !isset($knownVersions['splits'][$name])) {
                 $filteredPackages[] = $package;
                 continue;
             }
 
-            if (null !== $alias = $package->getExtra()['branch-alias'][$version] ?? null) {
-                $version = $this->versionParser->normalize($alias);
+            if (null !== $alias = $package->getExtra()['branch-alias'][$package->getVersion()] ?? null) {
+                $versions[] = $this->versionParser->normalize($alias);
             }
 
-            if ($this->symfonyConstraints->matches(new Constraint('==', $version))) {
-                $filteredPackages[] = $package;
-                $oneSymfony = $oneSymfony || 'symfony/symfony' === $name;
-                continue;
+            foreach ($versions as $version) {
+                if ($this->symfonyConstraints->matches(new Constraint('==', $version))) {
+                    $filteredPackages[] = $package;
+                    $oneSymfony = $oneSymfony || 'symfony/symfony' === $name;
+                    continue 2;
+                }
             }
 
             if ('symfony/symfony' === $name) {
@@ -99,9 +105,10 @@ class PackageFilter
             foreach ($vers as $i => $v) {
                 if (!isset($okVersions[$v])) {
                     $okVersions[$v] = false;
+                    $w = '.x' === substr($v, -2) ? $versions['next'] : $v;
 
                     for ($j = 0; $j < 60; ++$j) {
-                        if ($this->symfonyConstraints->matches(new Constraint('==', $v.'.'.$j.'.0'))) {
+                        if ($this->symfonyConstraints->matches(new Constraint('==', $w.'.'.$j.'.0'))) {
                             $okVersions[$v] = true;
                             break;
                         }

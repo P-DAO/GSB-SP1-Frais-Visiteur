@@ -4,10 +4,11 @@
 
 return [
     '_preview_error' => [['code', '_format'], ['_controller' => 'error_controller::preview', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format'], ['variable', '/', '\\d+', 'code'], ['text', '/_error']], [], []],
-    'accueil' => [[], ['_controller' => 'App\\Controller\\AccueilController::index'], [], [['text', '/accueil']], [], []],
+    'accueil' => [[], ['_controller' => 'App\\Controller\\AccueilController::index'], [], [['text', '/']], [], []],
     'index' => [[], ['_controller' => 'App\\Controller\\AccueilController::index'], [], [['text', '/']], [], []],
     'seConnecterVisiteur' => [[], ['_controller' => 'App\\Controller\\VisiteurController::seConnecterVisiteur'], [], [['text', '/visiteur/seConnecterVisiteur']], [], []],
-    'menuV' => [[], ['_controller' => 'App\\Controller\\VisiteurController::visiteur'], [], [['text', '/visiteur/menu']], [], []],
+    'seDeconnecterVisiteur' => [[], ['_controller' => 'App\\Controller\\VisiteurController::seDeconnecterVisiteur'], [], [['text', '/visiteur/seDeconnecterVisiteur']], [], []],
+    'CompteVisiteur' => [[], ['_controller' => 'App\\Controller\\VisiteurController::visiteur'], [], [['text', '/visiteur/CompteVisiteur']], [], []],
     'choixMois' => [[], ['_controller' => 'App\\Controller\\VisiteurController::choixMois'], [], [['text', '/visiteur/ChoixMois']], [], []],
     'consulter' => [[], ['_controller' => 'App\\Controller\\VisiteurController::consulter'], [], [['text', '/visiteur/consulter']], [], []],
     'saisir' => [[], ['_controller' => 'App\\Controller\\VisiteurController::saisir'], [], [['text', '/visiteur/saisir']], [], []],

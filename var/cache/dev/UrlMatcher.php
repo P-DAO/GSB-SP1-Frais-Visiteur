@@ -8,10 +8,13 @@
 return [
     false, // $matchHost
     [ // $staticRoutes
-        '/accueil' => [[['_route' => 'accueil', '_controller' => 'App\\Controller\\AccueilController::index'], null, null, null, false, false, null]],
-        '/' => [[['_route' => 'index', '_controller' => 'App\\Controller\\AccueilController::index'], null, null, null, false, false, null]],
+        '/' => [
+            [['_route' => 'accueil', '_controller' => 'App\\Controller\\AccueilController::index'], null, null, null, false, false, null],
+            [['_route' => 'index', '_controller' => 'App\\Controller\\AccueilController::index'], null, null, null, false, false, null],
+        ],
         '/visiteur/seConnecterVisiteur' => [[['_route' => 'seConnecterVisiteur', '_controller' => 'App\\Controller\\VisiteurController::seConnecterVisiteur'], null, null, null, false, false, null]],
-        '/visiteur/menu' => [[['_route' => 'menuV', '_controller' => 'App\\Controller\\VisiteurController::visiteur'], null, null, null, false, false, null]],
+        '/visiteur/seDeconnecterVisiteur' => [[['_route' => 'seDeconnecterVisiteur', '_controller' => 'App\\Controller\\VisiteurController::seDeconnecterVisiteur'], null, null, null, false, false, null]],
+        '/visiteur/CompteVisiteur' => [[['_route' => 'CompteVisiteur', '_controller' => 'App\\Controller\\VisiteurController::visiteur'], null, null, null, false, false, null]],
         '/visiteur/ChoixMois' => [[['_route' => 'choixMois', '_controller' => 'App\\Controller\\VisiteurController::choixMois'], null, null, null, false, false, null]],
         '/visiteur/consulter' => [[['_route' => 'consulter', '_controller' => 'App\\Controller\\VisiteurController::consulter'], null, null, null, false, false, null]],
         '/visiteur/saisir' => [[['_route' => 'saisir', '_controller' => 'App\\Controller\\VisiteurController::saisir'], null, null, null, false, false, null]],

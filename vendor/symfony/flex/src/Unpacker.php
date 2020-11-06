@@ -23,8 +23,6 @@ use Composer\Package\Version\VersionSelector;
 use Composer\Plugin\PluginInterface;
 use Composer\Repository\CompositeRepository;
 use Composer\Repository\RepositorySet;
-use Composer\Semver\Constraint\MultiConstraint;
-use Composer\Semver\Intervals;
 use Composer\Semver\VersionParser;
 use Symfony\Flex\Unpack\Operation;
 use Symfony\Flex\Unpack\Result;
@@ -102,9 +100,10 @@ class Unpacker
 
                 $linkName = $link->getTarget();
                 $linkType = $package['dev'] ? 'require-dev' : 'require';
+                $constraint = $this->versionParser->parseConstraints($constraint);
 
                 if (isset($links[$linkName])) {
-                    $links[$linkName]['constraints'][] = $this->versionParser->parseConstraints($constraint);
+                    $links[$linkName]['constraints'][] = $constraint;
                     if ('require' === $linkType) {
                         $links[$linkName]['type'] = 'require';
                     }
@@ -145,10 +144,7 @@ class Unpacker
                 $jsonManipulator->removeSubNode('require-dev', $link['name']);
             }
 
-            $constraint = class_exists(Intervals::class, false)
-                ? Intervals::compactConstraint(MultiConstraint::create($link['constraints']))
-                : end($link['constraints'])
-            ;
+            $constraint = end($link['constraints']);
 
             if (!$jsonManipulator->addLink($link['type'], $link['name'], $constraint->getPrettyString(), $op->shouldSort())) {
                 throw new \RuntimeException(sprintf('Unable to unpack package "%s".', $link['name']));

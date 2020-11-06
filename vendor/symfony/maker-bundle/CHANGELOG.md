@@ -1,3 +1,18 @@
+1.23
+====
+
+* Added experimental PHP 8 support. The bundle now allows php 8 and all
+  maker commands (whose dependencies allow PHP 8) now having passing tests.
+
+1.22
+====
+
+* [make:entity] Optimized how the `removeXXXX()` methods are generated
+  for relationships - #675 thanks to @mhabibi!
+
+* [make:serializer:normalizer] Generated a better template, trying to
+  guess the class you might be normalizing - #672 thanks to @BatsaxIV
+
 1.21
 ====
 
