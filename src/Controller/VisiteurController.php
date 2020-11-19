@@ -67,7 +67,7 @@ class VisiteurController extends AbstractController
                     
                     $_SESSION['visiteur'] = $lesVisiteurs;
                   
-                    return $this->redirect('CompteVisiteur');
+                    return $this->redirect('Compte');
             }
         }
         return $this->render('visiteur/seConnecterVisiteur.html.twig',array('form'=>$form->createView()));
@@ -80,8 +80,58 @@ class VisiteurController extends AbstractController
         ]);
     }
 
+    public function consulter(Request $request)
+    {
+        $formulaire = $this->createFormBuilder(array('allow_extra_field' => true))
+                ->add('mois',ChoiceType::class,['choices'=>['Janvier'=>'01',
+                                                            'Février'=>'02',
+                                                            'Mars'=>'03',
+                                                            'Avril'=>'04',
+                                                            'Mai'=>'05',
+                                                            'Juin'=>'06',
+                                                            'Juillet'=>'07',
+                                                            'Août'=>'08',
+                                                            'Septembre'=>'09',
+                                                            'Octobre'=>'10',
+                                                            'Novembre'=>'11',
+                                                            'Décembre'=>'12',]
+                                            ])
+                ->add('annee', ChoiceType::class, ['choices'=>[Date ('Y')=>Date ('Y'),
+                                                            Date ('Y') -1  =>Date ('Y')-1,
+                                                            Date ('Y') -2  =>Date ('Y')-2,
+                                                            Date ('Y') -3  =>Date ('Y')-3,
+                                                            Date ('Y') -4  =>Date ('Y')-4,
+                                                            Date ('Y') -5  =>Date ('Y')-5,
+                                                            Date ('Y') -6  =>Date ('Y')-6,
+                                                            Date ('Y') -7  =>Date ('Y')-7,
+                                                            Date ('Y') -8  =>Date ('Y')-8,
+                                                            Date ('Y') -9  =>Date ('Y')-9,
+                                                            Date ('Y') -10  =>Date ('Y')-10,]
+                ])
 
-    
+                ->add('valider',SubmitType::class)
+                ->add('annuler',ResetType::class) 
+                ->getForm();
+
+                $formulaire = Request::createFromGlobals();
+                if ($formulaire->isSubmitted() && $formulaire->isValid()) {
+
+                        $session = $request->getSession();
+                        $id = $session->get('id');
+
+                        $em = $this->getDoctrine()->getManager();
+
+                        $mois = date("m");
+                        $annee = date("Y");
+                        $s=sprintf("%02d%04d" , $mois , $annee);
+
+                        $ficheFrais = $em->getRepository('FicheFrais::class')->getFicheFrais($id,$s);
+
+                        dump($ficheFrais);
+
+                        return $this->render('visiteur/consulter.html.twig',array('form'=>$formulaire->createView()));
+                    
+    }
 }
-
+}
     

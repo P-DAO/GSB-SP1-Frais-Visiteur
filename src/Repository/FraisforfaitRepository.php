@@ -48,5 +48,8 @@ class FraisforfaitRepository extends ServiceEntityRepository
     }
     */
 
+    public function getFraisForfaitMois($ficheFrais){
+
+    }
    
 }

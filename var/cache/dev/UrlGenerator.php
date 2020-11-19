@@ -5,12 +5,13 @@
 return [
     '_preview_error' => [['code', '_format'], ['_controller' => 'error_controller::preview', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format'], ['variable', '/', '\\d+', 'code'], ['text', '/_error']], [], []],
     'accueil' => [[], ['_controller' => 'App\\Controller\\AccueilController::index'], [], [['text', '/']], [], []],
-    'index' => [[], ['_controller' => 'App\\Controller\\AccueilController::index'], [], [['text', '/']], [], []],
-    'seConnecterVisiteur' => [[], ['_controller' => 'App\\Controller\\VisiteurController::seConnecterVisiteur'], [], [['text', '/visiteur/seConnecterVisiteur']], [], []],
-    'seDeconnecterVisiteur' => [[], ['_controller' => 'App\\Controller\\VisiteurController::seDeconnecterVisiteur'], [], [['text', '/visiteur/seDeconnecterVisiteur']], [], []],
-    'CompteVisiteur' => [[], ['_controller' => 'App\\Controller\\VisiteurController::visiteur'], [], [['text', '/visiteur/CompteVisiteur']], [], []],
+    'comptable' => [[], ['_controller' => 'App\\Controller\\ComptableController::index'], [], [['text', '/comptable']], [], []],
+    'index' => [[], ['_controller' => 'App\\Controller\\AccueilController::index'], [], [['text', '/accueil']], [], []],
+    'seConnecterVisiteur' => [[], ['_controller' => 'App\\Controller\\VisiteurController::seConnecterVisiteur'], [], [['text', '/visiteur/Connexion']], [], []],
+    'seDeconnecterVisiteur' => [[], ['_controller' => 'App\\Controller\\VisiteurController::seDeconnecterVisiteur'], [], [['text', '/visiteur/Deconnexion']], [], []],
+    'CompteVisiteur' => [[], ['_controller' => 'App\\Controller\\VisiteurController::visiteur'], [], [['text', '/visiteur/Compte']], [], []],
     'choixMois' => [[], ['_controller' => 'App\\Controller\\VisiteurController::choixMois'], [], [['text', '/visiteur/ChoixMois']], [], []],
     'consulter' => [[], ['_controller' => 'App\\Controller\\VisiteurController::consulter'], [], [['text', '/visiteur/consulter']], [], []],
     'saisir' => [[], ['_controller' => 'App\\Controller\\VisiteurController::saisir'], [], [['text', '/visiteur/saisir']], [], []],
-    'comptable' => [[], ['_controller' => 'App\\Controller\\ComptableController::comptable'], [], [['text', '/comptable/menu']], [], []],
+    'CompteComptable' => [[], ['_controller' => 'App\\Controller\\ComptableController::comptable'], [], [['text', '/comptable/Compte']], [], []],
 ];

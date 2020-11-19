@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).'/vendor/autoload.php';
-require __DIR__.'/ContainerWvn9UPe/srcApp_KernelDevDebugContainer.php';
+require __DIR__.'/Container0ySD6kN/srcApp_KernelDevDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -33,6 +33,9 @@ $classes[] = 'App\Repository\FraisforfaitRepository';
 $classes[] = 'App\Repository\LignefraisforfaitRepository';
 $classes[] = 'App\Repository\LignefraishorsforfaitRepository';
 $classes[] = 'App\Repository\VisiteurRepository';
+$classes[] = 'Doctrine\DBAL\Tools\Console\Command\RunSqlCommand';
+$classes[] = 'Doctrine\Bundle\DoctrineBundle\Dbal\ManagerRegistryAwareConnectionProvider';
+$classes[] = 'Doctrine\Bundle\DoctrineBundle\Registry';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Controller\RedirectController';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Controller\TemplateController';
 $classes[] = 'Symfony\Component\Cache\DoctrineProvider';
@@ -92,7 +95,6 @@ $classes[] = 'Symfony\Component\HttpKernel\Debug\FileLinkFormatter';
 $classes[] = 'Symfony\Component\Stopwatch\Stopwatch';
 $classes[] = 'Symfony\Component\DependencyInjection\Config\ContainerParametersResourceChecker';
 $classes[] = 'Symfony\Component\HttpKernel\EventListener\DisallowRobotsIndexingListener';
-$classes[] = 'Doctrine\Bundle\DoctrineBundle\Registry';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Command\Proxy\ClearMetadataCacheDoctrineCommand';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Command\Proxy\ClearQueryCacheDoctrineCommand';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Command\Proxy\ClearResultCacheDoctrineCommand';

@@ -48,7 +48,16 @@ class FichefraisRepository extends ServiceEntityRepository
     }
     */
 
-    
+    public function getFicheFrais($id,$s)
+    {
+        $queryBuilder = $this->_em->createQueryBuilder()
+            ->select('ff')
+            ->from(FicheFrais::class, 'ff')
+            ->where('ff.mois = :mois')
+            ->setParameter('mois',$s)
+            ->getQuery()
+            ->getResult();
+    }
 
 
 }
