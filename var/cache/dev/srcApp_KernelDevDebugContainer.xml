@@ -10,26 +10,18 @@
     <parameter key="kernel.logs_dir">/var/www/html/GSB-Frais/var/log</parameter>
     <parameter key="kernel.bundles" type="collection">
       <parameter key="FrameworkBundle">Symfony\Bundle\FrameworkBundle\FrameworkBundle</parameter>
-      <parameter key="MakerBundle">Symfony\Bundle\MakerBundle\MakerBundle</parameter>
-      <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
       <parameter key="TwigBundle">Symfony\Bundle\TwigBundle\TwigBundle</parameter>
       <parameter key="TwigExtraBundle">Twig\Extra\TwigExtraBundle\TwigExtraBundle</parameter>
-      <parameter key="WebServerBundle">Symfony\Bundle\WebServerBundle\WebServerBundle</parameter>
       <parameter key="DoctrineBundle">Doctrine\Bundle\DoctrineBundle\DoctrineBundle</parameter>
       <parameter key="DoctrineMigrationsBundle">Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle</parameter>
+      <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
+      <parameter key="MakerBundle">Symfony\Bundle\MakerBundle\MakerBundle</parameter>
+      <parameter key="WebServerBundle">Symfony\Bundle\WebServerBundle\WebServerBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
         <parameter key="path">/var/www/html/GSB-Frais/vendor/symfony/framework-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\FrameworkBundle</parameter>
-      </parameter>
-      <parameter key="MakerBundle" type="collection">
-        <parameter key="path">/var/www/html/GSB-Frais/vendor/symfony/maker-bundle/src</parameter>
-        <parameter key="namespace">Symfony\Bundle\MakerBundle</parameter>
-      </parameter>
-      <parameter key="SensioFrameworkExtraBundle" type="collection">
-        <parameter key="path">/var/www/html/GSB-Frais/vendor/sensio/framework-extra-bundle/src</parameter>
-        <parameter key="namespace">Sensio\Bundle\FrameworkExtraBundle</parameter>
       </parameter>
       <parameter key="TwigBundle" type="collection">
         <parameter key="path">/var/www/html/GSB-Frais/vendor/symfony/twig-bundle</parameter>
@@ -39,10 +31,6 @@
         <parameter key="path">/var/www/html/GSB-Frais/vendor/twig/extra-bundle/src</parameter>
         <parameter key="namespace">Twig\Extra\TwigExtraBundle</parameter>
       </parameter>
-      <parameter key="WebServerBundle" type="collection">
-        <parameter key="path">/var/www/html/GSB-Frais/vendor/symfony/web-server-bundle</parameter>
-        <parameter key="namespace">Symfony\Bundle\WebServerBundle</parameter>
-      </parameter>
       <parameter key="DoctrineBundle" type="collection">
         <parameter key="path">/var/www/html/GSB-Frais/vendor/doctrine/doctrine-bundle</parameter>
         <parameter key="namespace">Doctrine\Bundle\DoctrineBundle</parameter>
@@ -50,6 +38,18 @@
       <parameter key="DoctrineMigrationsBundle" type="collection">
         <parameter key="path">/var/www/html/GSB-Frais/vendor/doctrine/doctrine-migrations-bundle</parameter>
         <parameter key="namespace">Doctrine\Bundle\MigrationsBundle</parameter>
+      </parameter>
+      <parameter key="SensioFrameworkExtraBundle" type="collection">
+        <parameter key="path">/var/www/html/GSB-Frais/vendor/sensio/framework-extra-bundle/src</parameter>
+        <parameter key="namespace">Sensio\Bundle\FrameworkExtraBundle</parameter>
+      </parameter>
+      <parameter key="MakerBundle" type="collection">
+        <parameter key="path">/var/www/html/GSB-Frais/vendor/symfony/maker-bundle/src</parameter>
+        <parameter key="namespace">Symfony\Bundle\MakerBundle</parameter>
+      </parameter>
+      <parameter key="WebServerBundle" type="collection">
+        <parameter key="path">/var/www/html/GSB-Frais/vendor/symfony/web-server-bundle</parameter>
+        <parameter key="namespace">Symfony\Bundle\WebServerBundle</parameter>
       </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
@@ -1200,22 +1200,6 @@
         <argument>-64</argument>
       </call>
       <call method="addListener">
-        <argument>console.error</argument>
-        <argument type="collection">
-          <argument type="service" id="maker.console_error_listener"/>
-          <argument>onConsoleError</argument>
-        </argument>
-        <argument>0</argument>
-      </call>
-      <call method="addListener">
-        <argument>console.terminate</argument>
-        <argument type="collection">
-          <argument type="service" id="maker.console_error_listener"/>
-          <argument>onConsoleTerminate</argument>
-        </argument>
-        <argument>0</argument>
-      </call>
-      <call method="addListener">
         <argument>kernel.controller</argument>
         <argument type="collection">
           <argument type="service" id="sensio_framework_extra.controller.listener"/>
@@ -1268,6 +1252,22 @@
         <argument type="collection">
           <argument type="service" id="framework_extra_bundle.event.is_granted"/>
           <argument>onKernelControllerArguments</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>console.error</argument>
+        <argument type="collection">
+          <argument type="service" id="maker.console_error_listener"/>
+          <argument>onConsoleError</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>console.terminate</argument>
+        <argument type="collection">
+          <argument type="service" id="maker.console_error_listener"/>
+          <argument>onConsoleTerminate</argument>
         </argument>
         <argument>0</argument>
       </call>
@@ -1475,205 +1475,6 @@
       <call method="setDefault">
         <argument type="service" id="mime_types"/>
       </call>
-    </service>
-    <service id="maker.file_manager" class="Symfony\Bundle\MakerBundle\FileManager" public="false">
-      <argument type="service" id="filesystem"/>
-      <argument type="service" id="maker.autoloader_util"/>
-      <argument type="service" id="maker.file_link_formatter"/>
-      <argument>/var/www/html/GSB-Frais</argument>
-      <argument>/var/www/html/GSB-Frais/templates</argument>
-    </service>
-    <service id="maker.autoloader_finder" class="Symfony\Bundle\MakerBundle\Util\ComposerAutoloaderFinder" public="false">
-      <argument>App</argument>
-    </service>
-    <service id="maker.autoloader_util" class="Symfony\Bundle\MakerBundle\Util\AutoloaderUtil" public="false">
-      <argument type="service" id="maker.autoloader_finder"/>
-    </service>
-    <service id="maker.file_link_formatter" class="Symfony\Bundle\MakerBundle\Util\MakerFileLinkFormatter" public="false">
-      <argument type="service" id="debug.file_link_formatter" on-invalid="ignore"/>
-    </service>
-    <service id="maker.event_registry" class="Symfony\Bundle\MakerBundle\EventRegistry" public="false">
-      <argument type="service" id="debug.event_dispatcher"/>
-    </service>
-    <service id="maker.console_error_listener" class="Symfony\Bundle\MakerBundle\Event\ConsoleErrorSubscriber" public="false">
-      <tag name="kernel.event_subscriber"/>
-    </service>
-    <service id="maker.doctrine_helper" class="Symfony\Bundle\MakerBundle\Doctrine\DoctrineHelper" public="false">
-      <argument>App\Entity</argument>
-      <argument type="service" id="doctrine" on-invalid="ignore"/>
-    </service>
-    <service id="maker.auto_command.abstract" class="Symfony\Bundle\MakerBundle\Command\MakerCommand" public="false" abstract="true">
-      <argument></argument>
-      <argument type="service" id="maker.file_manager"/>
-      <argument type="service" id="maker.generator"/>
-    </service>
-    <service id="maker.generator" class="Symfony\Bundle\MakerBundle\Generator" public="false">
-      <argument type="service" id="maker.file_manager"/>
-      <argument>App</argument>
-    </service>
-    <service id="maker.entity_class_generator" class="Symfony\Bundle\MakerBundle\Doctrine\EntityClassGenerator" public="false">
-      <argument type="service" id="maker.generator"/>
-      <argument type="service" id="maker.doctrine_helper"/>
-      <call method="setMangerRegistryClassName">
-        <argument>Doctrine\Persistence\ManagerRegistry</argument>
-      </call>
-    </service>
-    <service id="maker.user_class_builder" class="Symfony\Bundle\MakerBundle\Security\UserClassBuilder" public="false"/>
-    <service id="maker.security_config_updater" class="Symfony\Bundle\MakerBundle\Security\SecurityConfigUpdater" public="false"/>
-    <service id="maker.renderer.form_type_renderer" class="Symfony\Bundle\MakerBundle\Renderer\FormTypeRenderer" public="false">
-      <argument type="service" id="maker.generator"/>
-    </service>
-    <service id="maker.maker.make_authenticator" class="Symfony\Bundle\MakerBundle\Maker\MakeAuthenticator" public="false">
-      <tag name="maker.command"/>
-      <argument type="service" id="maker.file_manager"/>
-      <argument type="service" id="maker.security_config_updater"/>
-      <argument type="service" id="maker.generator"/>
-      <argument type="service" id="maker.doctrine_helper"/>
-    </service>
-    <service id="maker.maker.make_command" class="Symfony\Bundle\MakerBundle\Maker\MakeCommand" public="false">
-      <tag name="maker.command"/>
-    </service>
-    <service id="maker.maker.make_controller" class="Symfony\Bundle\MakerBundle\Maker\MakeController" public="false">
-      <tag name="maker.command"/>
-      <argument type="service" id="maker.file_manager"/>
-    </service>
-    <service id="maker.maker.make_crud" class="Symfony\Bundle\MakerBundle\Maker\MakeCrud" public="false">
-      <tag name="maker.command"/>
-      <argument type="service" id="maker.doctrine_helper"/>
-      <argument type="service" id="maker.renderer.form_type_renderer"/>
-    </service>
-    <service id="maker.maker.make_docker_database" class="Symfony\Bundle\MakerBundle\Maker\MakeDockerDatabase" public="false">
-      <tag name="maker.command"/>
-      <argument type="service" id="maker.file_manager"/>
-    </service>
-    <service id="maker.maker.make_entity" class="Symfony\Bundle\MakerBundle\Maker\MakeEntity" public="false">
-      <tag name="maker.command"/>
-      <argument type="service" id="maker.file_manager"/>
-      <argument type="service" id="maker.doctrine_helper"/>
-      <argument>/var/www/html/GSB-Frais</argument>
-      <argument type="service" id="maker.generator"/>
-      <argument type="service" id="maker.entity_class_generator"/>
-    </service>
-    <service id="maker.maker.make_fixtures" class="Symfony\Bundle\MakerBundle\Maker\MakeFixtures" public="false">
-      <tag name="maker.command"/>
-    </service>
-    <service id="maker.maker.make_form" class="Symfony\Bundle\MakerBundle\Maker\MakeForm" public="false">
-      <tag name="maker.command"/>
-      <argument type="service" id="maker.doctrine_helper"/>
-      <argument type="service" id="maker.renderer.form_type_renderer"/>
-    </service>
-    <service id="maker.maker.make_functional_test" class="Symfony\Bundle\MakerBundle\Maker\MakeFunctionalTest" public="false">
-      <tag name="maker.command"/>
-    </service>
-    <service id="maker.maker.make_message" class="Symfony\Bundle\MakerBundle\Maker\MakeMessage" public="false">
-      <tag name="maker.command"/>
-      <argument type="service" id="maker.file_manager"/>
-    </service>
-    <service id="maker.maker.make_messenger_middleware" class="Symfony\Bundle\MakerBundle\Maker\MakeMessengerMiddleware" public="false">
-      <tag name="maker.command"/>
-    </service>
-    <service id="maker.maker.make_registration_form" class="Symfony\Bundle\MakerBundle\Maker\MakeRegistrationForm" public="false">
-      <tag name="maker.command"/>
-      <argument type="service" id="maker.file_manager"/>
-      <argument type="service" id="maker.renderer.form_type_renderer"/>
-      <argument type="service" id="router.default"/>
-    </service>
-    <service id="maker.maker.make_reset_password" class="Symfony\Bundle\MakerBundle\Maker\MakeResetPassword" public="false">
-      <tag name="maker.command"/>
-      <argument type="service" id="maker.file_manager"/>
-      <argument type="service" id="maker.doctrine_helper"/>
-      <argument type="service" id="maker.entity_class_generator"/>
-    </service>
-    <service id="maker.maker.make_serializer_encoder" class="Symfony\Bundle\MakerBundle\Maker\MakeSerializerEncoder" public="false">
-      <tag name="maker.command"/>
-    </service>
-    <service id="maker.maker.make_serializer_normalizer" class="Symfony\Bundle\MakerBundle\Maker\MakeSerializerNormalizer" public="false">
-      <tag name="maker.command"/>
-    </service>
-    <service id="maker.maker.make_subscriber" class="Symfony\Bundle\MakerBundle\Maker\MakeSubscriber" public="false">
-      <tag name="maker.command"/>
-      <argument type="service" id="maker.event_registry"/>
-    </service>
-    <service id="maker.maker.make_twig_extension" class="Symfony\Bundle\MakerBundle\Maker\MakeTwigExtension" public="false">
-      <tag name="maker.command"/>
-    </service>
-    <service id="maker.maker.make_unit_test" class="Symfony\Bundle\MakerBundle\Maker\MakeUnitTest" public="false">
-      <tag name="maker.command"/>
-    </service>
-    <service id="maker.maker.make_validator" class="Symfony\Bundle\MakerBundle\Maker\MakeValidator" public="false">
-      <tag name="maker.command"/>
-    </service>
-    <service id="maker.maker.make_voter" class="Symfony\Bundle\MakerBundle\Maker\MakeVoter" public="false">
-      <tag name="maker.command"/>
-    </service>
-    <service id="maker.maker.make_user" class="Symfony\Bundle\MakerBundle\Maker\MakeUser" public="false">
-      <tag name="maker.command"/>
-      <argument type="service" id="maker.file_manager"/>
-      <argument type="service" id="maker.user_class_builder"/>
-      <argument type="service" id="maker.security_config_updater"/>
-      <argument type="service" id="maker.doctrine_helper"/>
-      <argument type="service" id="maker.entity_class_generator"/>
-    </service>
-    <service id="maker.maker.make_migration" class="Symfony\Bundle\MakerBundle\Maker\MakeMigration" public="false">
-      <tag name="maker.command"/>
-      <argument>/var/www/html/GSB-Frais</argument>
-    </service>
-    <service id="sensio_framework_extra.controller.listener" class="Sensio\Bundle\FrameworkExtraBundle\EventListener\ControllerListener">
-      <tag name="kernel.event_subscriber"/>
-      <tag name="container.hot_path"/>
-      <argument type="service" id="annotations.cached_reader"/>
-    </service>
-    <service id="sensio_framework_extra.converter.listener" class="Sensio\Bundle\FrameworkExtraBundle\EventListener\ParamConverterListener">
-      <tag name="kernel.event_subscriber"/>
-      <tag name="container.hot_path"/>
-      <argument type="service" id="sensio_framework_extra.converter.manager"/>
-      <argument>true</argument>
-    </service>
-    <service id="sensio_framework_extra.converter.manager" class="Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\ParamConverterManager">
-      <call method="add">
-        <argument type="service" id="sensio_framework_extra.converter.doctrine.orm"/>
-        <argument>0</argument>
-        <argument>doctrine.orm</argument>
-      </call>
-      <call method="add">
-        <argument type="service" id="framework_extra_bundle.date_time_param_converter"/>
-        <argument>0</argument>
-        <argument>datetime</argument>
-      </call>
-    </service>
-    <service id="sensio_framework_extra.converter.doctrine.orm" class="Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DoctrineParamConverter">
-      <tag name="request.param_converter" converter="doctrine.orm"/>
-      <argument type="service" id="doctrine" on-invalid="ignore"/>
-      <argument>null</argument>
-    </service>
-    <service id="framework_extra_bundle.date_time_param_converter" class="Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DateTimeParamConverter">
-      <tag name="request.param_converter" converter="datetime"/>
-    </service>
-    <service id="sensio_framework_extra.view.guesser" class="Sensio\Bundle\FrameworkExtraBundle\Templating\TemplateGuesser">
-      <argument type="service" id="kernel"/>
-    </service>
-    <service id="sensio_framework_extra.view.listener" class="Sensio\Bundle\FrameworkExtraBundle\EventListener\TemplateListener">
-      <tag name="kernel.event_subscriber"/>
-      <tag name="container.service_subscriber" id="twig"/>
-      <tag name="container.hot_path"/>
-      <argument type="service" id="sensio_framework_extra.view.guesser"/>
-      <call method="setContainer">
-        <argument type="service" id=".service_locator.C2Thyvr.sensio_framework_extra.view.listener"/>
-      </call>
-    </service>
-    <service id="sensio_framework_extra.cache.listener" class="Sensio\Bundle\FrameworkExtraBundle\EventListener\HttpCacheListener">
-      <tag name="kernel.event_subscriber"/>
-      <tag name="container.hot_path"/>
-      <tag name="container.hot_path"/>
-    </service>
-    <service id="framework_extra_bundle.event.is_granted" class="Sensio\Bundle\FrameworkExtraBundle\EventListener\IsGrantedListener">
-      <tag name="kernel.event_subscriber"/>
-      <tag name="container.hot_path"/>
-      <argument type="service" id="framework_extra_bundle.argument_name_convertor"/>
-      <argument>null</argument>
-    </service>
-    <service id="framework_extra_bundle.argument_name_convertor" class="Sensio\Bundle\FrameworkExtraBundle\Request\ArgumentNameConverter">
-      <argument type="service" id="argument_metadata_factory"/>
     </service>
     <service id=".1_~rVfStYY" public="false">
       <argument type="service" id="request_stack"/>
@@ -1919,38 +1720,6 @@
       </call>
     </service>
     <service id="twig.missing_extension_suggestor" class="Twig\Extra\TwigExtraBundle\MissingExtensionSuggestor" public="false"/>
-    <service id="web_server.command.server_run" class="Symfony\Bundle\WebServerBundle\Command\ServerRunCommand" public="false">
-      <tag name="console.command" command="server:run"/>
-      <argument>/var/www/html/GSB-Frais/public</argument>
-      <argument>dev</argument>
-      <argument>/var/www/html/GSB-Frais/var/cache</argument>
-      <call method="setName">
-        <argument>server:run</argument>
-      </call>
-    </service>
-    <service id="web_server.command.server_start" class="Symfony\Bundle\WebServerBundle\Command\ServerStartCommand" public="false">
-      <tag name="console.command" command="server:start"/>
-      <argument>/var/www/html/GSB-Frais/public</argument>
-      <argument>dev</argument>
-      <argument>/var/www/html/GSB-Frais/var/cache</argument>
-      <call method="setName">
-        <argument>server:start</argument>
-      </call>
-    </service>
-    <service id="web_server.command.server_stop" class="Symfony\Bundle\WebServerBundle\Command\ServerStopCommand" public="false">
-      <tag name="console.command" command="server:stop"/>
-      <argument>/var/www/html/GSB-Frais/var/cache</argument>
-      <call method="setName">
-        <argument>server:stop</argument>
-      </call>
-    </service>
-    <service id="web_server.command.server_status" class="Symfony\Bundle\WebServerBundle\Command\ServerStatusCommand" public="false">
-      <tag name="console.command" command="server:status"/>
-      <argument>/var/www/html/GSB-Frais/var/cache</argument>
-      <call method="setName">
-        <argument>server:status</argument>
-      </call>
-    </service>
     <service id="doctrine.dbal.logger.chain" class="Doctrine\DBAL\Logging\LoggerChain" public="false" abstract="true">
       <call method="addLogger">
         <argument type="service" id="doctrine.dbal.logger"/>
@@ -2450,6 +2219,241 @@
       </call>
     </service>
     <service id="doctrine.migrations.storage.table_storage" class="Doctrine\Migrations\Metadata\Storage\TableMetadataStorageConfiguration"/>
+    <service id="sensio_framework_extra.controller.listener" class="Sensio\Bundle\FrameworkExtraBundle\EventListener\ControllerListener">
+      <tag name="kernel.event_subscriber"/>
+      <tag name="container.hot_path"/>
+      <argument type="service" id="annotations.cached_reader"/>
+    </service>
+    <service id="sensio_framework_extra.converter.listener" class="Sensio\Bundle\FrameworkExtraBundle\EventListener\ParamConverterListener">
+      <tag name="kernel.event_subscriber"/>
+      <tag name="container.hot_path"/>
+      <argument type="service" id="sensio_framework_extra.converter.manager"/>
+      <argument>true</argument>
+    </service>
+    <service id="sensio_framework_extra.converter.manager" class="Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\ParamConverterManager">
+      <call method="add">
+        <argument type="service" id="sensio_framework_extra.converter.doctrine.orm"/>
+        <argument>0</argument>
+        <argument>doctrine.orm</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id="framework_extra_bundle.date_time_param_converter"/>
+        <argument>0</argument>
+        <argument>datetime</argument>
+      </call>
+    </service>
+    <service id="sensio_framework_extra.converter.doctrine.orm" class="Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DoctrineParamConverter">
+      <tag name="request.param_converter" converter="doctrine.orm"/>
+      <argument type="service" id="doctrine" on-invalid="ignore"/>
+      <argument>null</argument>
+    </service>
+    <service id="framework_extra_bundle.date_time_param_converter" class="Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DateTimeParamConverter">
+      <tag name="request.param_converter" converter="datetime"/>
+    </service>
+    <service id="sensio_framework_extra.view.guesser" class="Sensio\Bundle\FrameworkExtraBundle\Templating\TemplateGuesser">
+      <argument type="service" id="kernel"/>
+    </service>
+    <service id="sensio_framework_extra.view.listener" class="Sensio\Bundle\FrameworkExtraBundle\EventListener\TemplateListener">
+      <tag name="kernel.event_subscriber"/>
+      <tag name="container.service_subscriber" id="twig"/>
+      <tag name="container.hot_path"/>
+      <argument type="service" id="sensio_framework_extra.view.guesser"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.C2Thyvr.sensio_framework_extra.view.listener"/>
+      </call>
+    </service>
+    <service id="sensio_framework_extra.cache.listener" class="Sensio\Bundle\FrameworkExtraBundle\EventListener\HttpCacheListener">
+      <tag name="kernel.event_subscriber"/>
+      <tag name="container.hot_path"/>
+      <tag name="container.hot_path"/>
+    </service>
+    <service id="framework_extra_bundle.event.is_granted" class="Sensio\Bundle\FrameworkExtraBundle\EventListener\IsGrantedListener">
+      <tag name="kernel.event_subscriber"/>
+      <tag name="container.hot_path"/>
+      <argument type="service" id="framework_extra_bundle.argument_name_convertor"/>
+      <argument>null</argument>
+    </service>
+    <service id="framework_extra_bundle.argument_name_convertor" class="Sensio\Bundle\FrameworkExtraBundle\Request\ArgumentNameConverter">
+      <argument type="service" id="argument_metadata_factory"/>
+    </service>
+    <service id="maker.file_manager" class="Symfony\Bundle\MakerBundle\FileManager" public="false">
+      <argument type="service" id="filesystem"/>
+      <argument type="service" id="maker.autoloader_util"/>
+      <argument type="service" id="maker.file_link_formatter"/>
+      <argument>/var/www/html/GSB-Frais</argument>
+      <argument>/var/www/html/GSB-Frais/templates</argument>
+    </service>
+    <service id="maker.autoloader_finder" class="Symfony\Bundle\MakerBundle\Util\ComposerAutoloaderFinder" public="false">
+      <argument>App</argument>
+    </service>
+    <service id="maker.autoloader_util" class="Symfony\Bundle\MakerBundle\Util\AutoloaderUtil" public="false">
+      <argument type="service" id="maker.autoloader_finder"/>
+    </service>
+    <service id="maker.file_link_formatter" class="Symfony\Bundle\MakerBundle\Util\MakerFileLinkFormatter" public="false">
+      <argument type="service" id="debug.file_link_formatter" on-invalid="ignore"/>
+    </service>
+    <service id="maker.event_registry" class="Symfony\Bundle\MakerBundle\EventRegistry" public="false">
+      <argument type="service" id="debug.event_dispatcher"/>
+    </service>
+    <service id="maker.console_error_listener" class="Symfony\Bundle\MakerBundle\Event\ConsoleErrorSubscriber" public="false">
+      <tag name="kernel.event_subscriber"/>
+    </service>
+    <service id="maker.doctrine_helper" class="Symfony\Bundle\MakerBundle\Doctrine\DoctrineHelper" public="false">
+      <argument>App\Entity</argument>
+      <argument type="service" id="doctrine" on-invalid="ignore"/>
+    </service>
+    <service id="maker.auto_command.abstract" class="Symfony\Bundle\MakerBundle\Command\MakerCommand" public="false" abstract="true">
+      <argument></argument>
+      <argument type="service" id="maker.file_manager"/>
+      <argument type="service" id="maker.generator"/>
+    </service>
+    <service id="maker.generator" class="Symfony\Bundle\MakerBundle\Generator" public="false">
+      <argument type="service" id="maker.file_manager"/>
+      <argument>App</argument>
+      <argument type="service" id="maker.php_compat_util"/>
+    </service>
+    <service id="maker.entity_class_generator" class="Symfony\Bundle\MakerBundle\Doctrine\EntityClassGenerator" public="false">
+      <argument type="service" id="maker.generator"/>
+      <argument type="service" id="maker.doctrine_helper"/>
+      <call method="setMangerRegistryClassName">
+        <argument>Doctrine\Persistence\ManagerRegistry</argument>
+      </call>
+    </service>
+    <service id="maker.user_class_builder" class="Symfony\Bundle\MakerBundle\Security\UserClassBuilder" public="false"/>
+    <service id="maker.security_config_updater" class="Symfony\Bundle\MakerBundle\Security\SecurityConfigUpdater" public="false"/>
+    <service id="maker.renderer.form_type_renderer" class="Symfony\Bundle\MakerBundle\Renderer\FormTypeRenderer" public="false">
+      <argument type="service" id="maker.generator"/>
+    </service>
+    <service id="maker.php_compat_util" class="Symfony\Bundle\MakerBundle\Util\PhpCompatUtil" public="false">
+      <argument type="service" id="maker.file_manager"/>
+    </service>
+    <service id="maker.maker.make_authenticator" class="Symfony\Bundle\MakerBundle\Maker\MakeAuthenticator" public="false">
+      <tag name="maker.command"/>
+      <argument type="service" id="maker.file_manager"/>
+      <argument type="service" id="maker.security_config_updater"/>
+      <argument type="service" id="maker.generator"/>
+      <argument type="service" id="maker.doctrine_helper"/>
+    </service>
+    <service id="maker.maker.make_command" class="Symfony\Bundle\MakerBundle\Maker\MakeCommand" public="false">
+      <tag name="maker.command"/>
+    </service>
+    <service id="maker.maker.make_controller" class="Symfony\Bundle\MakerBundle\Maker\MakeController" public="false">
+      <tag name="maker.command"/>
+      <argument type="service" id="maker.file_manager"/>
+    </service>
+    <service id="maker.maker.make_crud" class="Symfony\Bundle\MakerBundle\Maker\MakeCrud" public="false">
+      <tag name="maker.command"/>
+      <argument type="service" id="maker.doctrine_helper"/>
+      <argument type="service" id="maker.renderer.form_type_renderer"/>
+    </service>
+    <service id="maker.maker.make_docker_database" class="Symfony\Bundle\MakerBundle\Maker\MakeDockerDatabase" public="false">
+      <tag name="maker.command"/>
+      <argument type="service" id="maker.file_manager"/>
+    </service>
+    <service id="maker.maker.make_entity" class="Symfony\Bundle\MakerBundle\Maker\MakeEntity" public="false">
+      <tag name="maker.command"/>
+      <argument type="service" id="maker.file_manager"/>
+      <argument type="service" id="maker.doctrine_helper"/>
+      <argument>/var/www/html/GSB-Frais</argument>
+      <argument type="service" id="maker.generator"/>
+      <argument type="service" id="maker.entity_class_generator"/>
+    </service>
+    <service id="maker.maker.make_fixtures" class="Symfony\Bundle\MakerBundle\Maker\MakeFixtures" public="false">
+      <tag name="maker.command"/>
+    </service>
+    <service id="maker.maker.make_form" class="Symfony\Bundle\MakerBundle\Maker\MakeForm" public="false">
+      <tag name="maker.command"/>
+      <argument type="service" id="maker.doctrine_helper"/>
+      <argument type="service" id="maker.renderer.form_type_renderer"/>
+    </service>
+    <service id="maker.maker.make_functional_test" class="Symfony\Bundle\MakerBundle\Maker\MakeFunctionalTest" public="false">
+      <tag name="maker.command"/>
+    </service>
+    <service id="maker.maker.make_message" class="Symfony\Bundle\MakerBundle\Maker\MakeMessage" public="false">
+      <tag name="maker.command"/>
+      <argument type="service" id="maker.file_manager"/>
+    </service>
+    <service id="maker.maker.make_messenger_middleware" class="Symfony\Bundle\MakerBundle\Maker\MakeMessengerMiddleware" public="false">
+      <tag name="maker.command"/>
+    </service>
+    <service id="maker.maker.make_registration_form" class="Symfony\Bundle\MakerBundle\Maker\MakeRegistrationForm" public="false">
+      <tag name="maker.command"/>
+      <argument type="service" id="maker.file_manager"/>
+      <argument type="service" id="maker.renderer.form_type_renderer"/>
+      <argument type="service" id="router.default"/>
+    </service>
+    <service id="maker.maker.make_reset_password" class="Symfony\Bundle\MakerBundle\Maker\MakeResetPassword" public="false">
+      <tag name="maker.command"/>
+      <argument type="service" id="maker.file_manager"/>
+      <argument type="service" id="maker.doctrine_helper"/>
+      <argument type="service" id="maker.entity_class_generator"/>
+    </service>
+    <service id="maker.maker.make_serializer_encoder" class="Symfony\Bundle\MakerBundle\Maker\MakeSerializerEncoder" public="false">
+      <tag name="maker.command"/>
+    </service>
+    <service id="maker.maker.make_serializer_normalizer" class="Symfony\Bundle\MakerBundle\Maker\MakeSerializerNormalizer" public="false">
+      <tag name="maker.command"/>
+    </service>
+    <service id="maker.maker.make_subscriber" class="Symfony\Bundle\MakerBundle\Maker\MakeSubscriber" public="false">
+      <tag name="maker.command"/>
+      <argument type="service" id="maker.event_registry"/>
+    </service>
+    <service id="maker.maker.make_twig_extension" class="Symfony\Bundle\MakerBundle\Maker\MakeTwigExtension" public="false">
+      <tag name="maker.command"/>
+    </service>
+    <service id="maker.maker.make_unit_test" class="Symfony\Bundle\MakerBundle\Maker\MakeUnitTest" public="false">
+      <tag name="maker.command"/>
+    </service>
+    <service id="maker.maker.make_validator" class="Symfony\Bundle\MakerBundle\Maker\MakeValidator" public="false">
+      <tag name="maker.command"/>
+    </service>
+    <service id="maker.maker.make_voter" class="Symfony\Bundle\MakerBundle\Maker\MakeVoter" public="false">
+      <tag name="maker.command"/>
+    </service>
+    <service id="maker.maker.make_user" class="Symfony\Bundle\MakerBundle\Maker\MakeUser" public="false">
+      <tag name="maker.command"/>
+      <argument type="service" id="maker.file_manager"/>
+      <argument type="service" id="maker.user_class_builder"/>
+      <argument type="service" id="maker.security_config_updater"/>
+      <argument type="service" id="maker.doctrine_helper"/>
+      <argument type="service" id="maker.entity_class_generator"/>
+    </service>
+    <service id="maker.maker.make_migration" class="Symfony\Bundle\MakerBundle\Maker\MakeMigration" public="false">
+      <tag name="maker.command"/>
+      <argument>/var/www/html/GSB-Frais</argument>
+    </service>
+    <service id="web_server.command.server_run" class="Symfony\Bundle\WebServerBundle\Command\ServerRunCommand" public="false">
+      <tag name="console.command" command="server:run"/>
+      <argument>/var/www/html/GSB-Frais/public</argument>
+      <argument>dev</argument>
+      <argument>/var/www/html/GSB-Frais/var/cache</argument>
+      <call method="setName">
+        <argument>server:run</argument>
+      </call>
+    </service>
+    <service id="web_server.command.server_start" class="Symfony\Bundle\WebServerBundle\Command\ServerStartCommand" public="false">
+      <tag name="console.command" command="server:start"/>
+      <argument>/var/www/html/GSB-Frais/public</argument>
+      <argument>dev</argument>
+      <argument>/var/www/html/GSB-Frais/var/cache</argument>
+      <call method="setName">
+        <argument>server:start</argument>
+      </call>
+    </service>
+    <service id="web_server.command.server_stop" class="Symfony\Bundle\WebServerBundle\Command\ServerStopCommand" public="false">
+      <tag name="console.command" command="server:stop"/>
+      <argument>/var/www/html/GSB-Frais/var/cache</argument>
+      <call method="setName">
+        <argument>server:stop</argument>
+      </call>
+    </service>
+    <service id="web_server.command.server_status" class="Symfony\Bundle\WebServerBundle\Command\ServerStatusCommand" public="false">
+      <tag name="console.command" command="server:status"/>
+      <argument>/var/www/html/GSB-Frais/var/cache</argument>
+      <call method="setName">
+        <argument>server:status</argument>
+      </call>
+    </service>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AccueilController" class="App\Controller\AccueilController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AccueilController" class="App\Controller\AccueilController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AccueilController" class="App\Controller\AccueilController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -2817,18 +2821,6 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.m90YCjy" method="withContext"/>
     </service>
-    <service id=".service_locator.C2Thyvr" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="twig" type="service" id="twig" on-invalid="ignore"/>
-      </argument>
-    </service>
-    <service id=".service_locator.C2Thyvr.sensio_framework_extra.view.listener" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator_context" id="sensio_framework_extra.view.listener"/>
-      <argument>sensio_framework_extra.view.listener</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.C2Thyvr" method="withContext"/>
-    </service>
     <service id=".service_locator.o9nGMXB" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -2840,6 +2832,18 @@
       <argument>twig.template_cache_warmer</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.o9nGMXB" method="withContext"/>
+    </service>
+    <service id=".service_locator.C2Thyvr" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="twig" type="service" id="twig" on-invalid="ignore"/>
+      </argument>
+    </service>
+    <service id=".service_locator.C2Thyvr.sensio_framework_extra.view.listener" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="sensio_framework_extra.view.listener"/>
+      <argument>sensio_framework_extra.view.listener</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.C2Thyvr" method="withContext"/>
     </service>
     <service id=".service_locator.wnlveDj" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
@@ -2920,10 +2924,6 @@
         <argument key="secrets:encrypt-from-local">console.command.secrets_encrypt_from_local</argument>
         <argument key="debug:twig">twig.command.debug</argument>
         <argument key="lint:twig">twig.command.lint</argument>
-        <argument key="server:run">web_server.command.server_run</argument>
-        <argument key="server:start">web_server.command.server_start</argument>
-        <argument key="server:stop">web_server.command.server_stop</argument>
-        <argument key="server:status">web_server.command.server_status</argument>
         <argument key="doctrine:database:create">doctrine.database_create_command</argument>
         <argument key="doctrine:database:drop">doctrine.database_drop_command</argument>
         <argument key="doctrine:database:import">doctrine.database_import_command</argument>
@@ -2957,6 +2957,10 @@
         <argument key="doctrine:migrations:status">doctrine_migrations.status_command</argument>
         <argument key="doctrine:migrations:up-to-date">doctrine_migrations.up_to_date_command</argument>
         <argument key="doctrine:migrations:version">doctrine_migrations.version_command</argument>
+        <argument key="server:run">web_server.command.server_run</argument>
+        <argument key="server:start">web_server.command.server_start</argument>
+        <argument key="server:stop">web_server.command.server_stop</argument>
+        <argument key="server:status">web_server.command.server_status</argument>
         <argument key="make:auth">maker.auto_command.make_auth</argument>
         <argument key="make:command">maker.auto_command.make_command</argument>
         <argument key="make:controller">maker.auto_command.make_controller</argument>
@@ -3133,6 +3137,8 @@
     <service id="annotation_reader" alias="annotations.cached_reader"/>
     <service id="Doctrine\Common\Annotations\Reader" alias="annotations.cached_reader" public="false"/>
     <service id="Symfony\Component\PropertyAccess\PropertyAccessorInterface" alias="property_accessor" public="false"/>
+    <service id="Symfony\Component\Mime\MimeTypesInterface" alias="mime_types" public="false"/>
+    <service id="Symfony\Component\Mime\MimeTypeGuesserInterface" alias="mime_types" public="false"/>
     <service id="Twig_Environment" alias="twig" public="false"/>
     <service id="Twig\Environment" alias="twig" public="false"/>
     <service id="Doctrine\DBAL\Driver\Connection" alias="doctrine.dbal.default_connection" public="false"/>

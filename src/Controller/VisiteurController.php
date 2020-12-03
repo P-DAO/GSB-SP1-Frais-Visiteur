@@ -80,7 +80,7 @@ class VisiteurController extends AbstractController
         ]);
     }
 
-    public function consulter(Request $request)
+    /*public function consulter(Request $request)
     {
         $formulaire = $this->createFormBuilder(array('allow_extra_field' => true))
                 ->add('mois',ChoiceType::class,['choices'=>['Janvier'=>'01',
@@ -132,6 +132,17 @@ class VisiteurController extends AbstractController
                         return $this->render('visiteur/consulter.html.twig',array('form'=>$formulaire->createView()));
                     
     }
+}*/
+
+
+        public function sasir(Request $request) {
+            $session = $request->getSession();
+            $idv = $session->get('id');
+            $mois = null;
+            $visiteur = $this->getDoctrine()->getRepository(Visiteur::class)->find($idv);
+            
+
 }
+
 }
     

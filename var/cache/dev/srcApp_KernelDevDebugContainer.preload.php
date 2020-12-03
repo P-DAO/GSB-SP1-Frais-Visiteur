@@ -10,17 +10,17 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).'/vendor/autoload.php';
-require __DIR__.'/Container0ySD6kN/srcApp_KernelDevDebugContainer.php';
+require __DIR__.'/ContainerUxv3gxM/srcApp_KernelDevDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
-$classes[] = 'Symfony\Bundle\MakerBundle\MakerBundle';
-$classes[] = 'Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle';
 $classes[] = 'Symfony\Bundle\TwigBundle\TwigBundle';
 $classes[] = 'Twig\Extra\TwigExtraBundle\TwigExtraBundle';
-$classes[] = 'Symfony\Bundle\WebServerBundle\WebServerBundle';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\DoctrineBundle';
 $classes[] = 'Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle';
+$classes[] = 'Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle';
+$classes[] = 'Symfony\Bundle\MakerBundle\MakerBundle';
+$classes[] = 'Symfony\Bundle\WebServerBundle\WebServerBundle';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\EventListener\ResolveControllerNameSubscriber';
 $classes[] = 'Symfony\Component\DependencyInjection\ServiceLocator';
@@ -219,6 +219,7 @@ $classes[] = 'Symfony\Bundle\MakerBundle\Util\AutoloaderUtil';
 $classes[] = 'Symfony\Bundle\MakerBundle\Util\ComposerAutoloaderFinder';
 $classes[] = 'Symfony\Bundle\MakerBundle\Util\MakerFileLinkFormatter';
 $classes[] = 'Symfony\Bundle\MakerBundle\Generator';
+$classes[] = 'Symfony\Bundle\MakerBundle\Util\PhpCompatUtil';
 $classes[] = 'Symfony\Bundle\MakerBundle\Renderer\FormTypeRenderer';
 $classes[] = 'Symfony\Bundle\MakerBundle\Security\SecurityConfigUpdater';
 $classes[] = 'Symfony\Component\DependencyInjection\ParameterBag\ContainerBag';
