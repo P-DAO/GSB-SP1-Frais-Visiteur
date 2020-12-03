@@ -135,14 +135,41 @@ class VisiteurController extends AbstractController
 }*/
 
 
-        public function sasir(Request $request) {
-            $session = $request->getSession();
-            $idv = $session->get('id');
-            $mois = null;
-            $visiteur = $this->getDoctrine()->getRepository(Visiteur::class)->find($idv);
-            
+        public function saisir(Request $request) {
+           
+            $formulaire = $this->createFormBuilder(array('allow_extra_field' => true))
+                ->add('etape',TextType::class, array('label' => 'Forfait Etape ' ))
+                ->add('km',TextType::class, array('label' => 'Frais Kilométrique' ))
+                ->add('nuitee',TextType::class, array('label' => 'Nuitée Hôtel' ))
+                ->add('repas',TextType::class, array('label' => 'Repas Restaurant' ))
+                ->add('save',SubmitType::class, array('label' => 'Valider','attr'=> array('class' => 'btn btn-primary btn-block')))
+                ->add('cancel',ResetType::class, array('label' => 'Quitter','attr'=> array('class' => 'btn btn-danger btn-block')))
+                ->getForm();
+                if ($formulaire->isSubmitted() && $formulaire->isValid()) {
 
-}
+                    $etape = $form['etape']->getData();
+                    $km = $form['km']->getData();
+                    $nuitee = $form['nuitee']->getData();
+                    $repas = $form['repas']->getData();
+                    $nuitee = $form['nuitee']->getData();
 
-}
-    
+                    $FicheFrais = new FicheFrais();
+                    $FicheFrais->setDateModif(new \DateTime());
+                    $FicheFrais->setIdVisiteur($visiteur);
+                    $FicheFrais->setMois($mois);
+                    $FicheFrais->setMontantValide(0);
+                    $FicheFrais->setNbJustificatifs(0);
+                    $FicheFrais->setIdEtat($etat);
+                    $entityManager->persist($FicheFrais);
+                    $entityManager->flush();
+
+
+                   
+                }    
+
+            return $this->render('visiteur/saisir.html.twig',array('form'=>$formulaire->createView()));
+        }
+    }
+ 
+
+          
