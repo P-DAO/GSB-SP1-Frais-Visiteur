@@ -4,13 +4,11 @@
 
 return [
     '_preview_error' => [['code', '_format'], ['_controller' => 'error_controller::preview', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format'], ['variable', '/', '\\d+', 'code'], ['text', '/_error']], [], []],
-    'accueil' => [[], ['_controller' => 'App\\Controller\\AccueilController::index'], [], [['text', '/']], [], []],
-    'comptable' => [[], ['_controller' => 'App\\Controller\\ComptableController::index'], [], [['text', '/comptable']], [], []],
-    'index' => [[], ['_controller' => 'App\\Controller\\AccueilController::index'], [], [['text', '/accueil']], [], []],
-    'seConnecterVisiteur' => [[], ['_controller' => 'App\\Controller\\VisiteurController::seConnecterVisiteur'], [], [['text', '/visiteur/Connexion']], [], []],
-    'seDeconnecterVisiteur' => [[], ['_controller' => 'App\\Controller\\VisiteurController::seDeconnecterVisiteur'], [], [['text', '/visiteur/Deconnexion']], [], []],
-    'CompteVisiteur' => [[], ['_controller' => 'App\\Controller\\VisiteurController::visiteur'], [], [['text', '/visiteur/Compte']], [], []],
-    'choixMois' => [[], ['_controller' => 'App\\Controller\\VisiteurController::choixMois'], [], [['text', '/visiteur/ChoixMois']], [], []],
+    'index' => [[], ['_controller' => 'App\\Controller\\AccueilController::index'], [], [['text', '/']], [], []],
+    'seConnecterVisiteur' => [[], ['_controller' => 'App\\Controller\\VisiteurController::seConnecterVisiteur'], [], [['text', '/visiteur/connexion']], [], []],
+    'seDeconnecterVisiteur' => [[], ['_controller' => 'App\\Controller\\VisiteurController::seDeconnecterVisiteur'], [], [['text', '/visiteur/deconnexion']], [], []],
+    'CompteVisiteur' => [[], ['_controller' => 'App\\Controller\\VisiteurController::visiteur'], [], [['text', '/visiteur/compte']], [], []],
+    'choixMois' => [[], ['_controller' => 'App\\Controller\\VisiteurController::choixMois'], [], [['text', '/visiteur/choixMois']], [], []],
     'consulter' => [[], ['_controller' => 'App\\Controller\\VisiteurController::consulter'], [], [['text', '/visiteur/consulter']], [], []],
     'saisir' => [[], ['_controller' => 'App\\Controller\\VisiteurController::saisir'], [], [['text', '/visiteur/saisir']], [], []],
     'CompteComptable' => [[], ['_controller' => 'App\\Controller\\ComptableController::comptable'], [], [['text', '/comptable/Compte']], [], []],

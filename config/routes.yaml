@@ -4,27 +4,27 @@
 
 #Acceuil
 index:
-    path: /accueil
+    path: /
     controller: App\Controller\AccueilController::index
 
 #Se connecter compte visiteur
 seConnecterVisiteur:
-    path: /visiteur/Connexion
+    path: /visiteur/connexion
     controller: App\Controller\VisiteurController::seConnecterVisiteur
 
 #Se deconnecter compte visiteur
 seDeconnecterVisiteur:
-    path: /visiteur/Deconnexion
+    path: /visiteur/deconnexion
     controller: App\Controller\VisiteurController::seDeconnecterVisiteur
 
 #Menu visiteur   
 CompteVisiteur:
-    path: /visiteur/Compte
+    path: /visiteur/compte
     controller: App\Controller\VisiteurController::visiteur
     
 #Choix du mois
 choixMois:
-    path: /visiteur/ChoixMois
+    path: /visiteur/choixMois
     controller: App\Controller\VisiteurController::choixMois
 
 #Consulter

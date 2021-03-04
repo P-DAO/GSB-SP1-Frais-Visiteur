@@ -25,8 +25,6 @@ class __TwigTemplate_88d7ee5c60a72a065fe99defb8bc6bdcadb992cf2051060511581690e33
         $this->source = $this->getSourceContext();
 
         $this->blocks = [
-            'stylesheets' => [$this, 'block_stylesheets'],
-            'javascripts' => [$this, 'block_javascripts'],
             'title' => [$this, 'block_title'],
             'body' => [$this, 'block_body'],
         ];
@@ -51,42 +49,7 @@ class __TwigTemplate_88d7ee5c60a72a065fe99defb8bc6bdcadb992cf2051060511581690e33
 
     }
 
-    // line 3
-    public function block_stylesheets($context, array $blocks = [])
-    {
-        $macros = $this->macros;
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
-
-        // line 4
-        echo "      <link href=\"";
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/accueil.css"), "html", null, true);
-        echo "\" type=\"text/css\" rel=\"stylesheet\" />
-    
-";
-        
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
-
-    }
-
-    // line 8
-    public function block_javascripts($context, array $blocks = [])
-    {
-        $macros = $this->macros;
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
-
-        // line 9
-        echo "    <script src=\"";
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/accueil.js"), "html", null, true);
-        echo "\"></script>
-";
-        
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
-
-    }
-
-    // line 12
+    // line 5
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -99,14 +62,14 @@ class __TwigTemplate_88d7ee5c60a72a065fe99defb8bc6bdcadb992cf2051060511581690e33
 
     }
 
-    // line 16
+    // line 9
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 17
+        // line 10
         echo "
 
   <!-- slider start -->
@@ -143,7 +106,7 @@ class __TwigTemplate_88d7ee5c60a72a065fe99defb8bc6bdcadb992cf2051060511581690e33
                 <span> Visiteur</span>
                 <div>
                 <a href=\"";
-        // line 52
+        // line 45
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("seConnecterVisiteur");
         echo "\"  class=\"button\"> Compte Visiteur</a>
                 </div>
@@ -218,21 +181,14 @@ class __TwigTemplate_88d7ee5c60a72a065fe99defb8bc6bdcadb992cf2051060511581690e33
 
     public function getDebugInfo()
     {
-        return array (  147 => 52,  110 => 17,  103 => 16,  90 => 12,  80 => 9,  73 => 8,  62 => 4,  55 => 3,  38 => 1,);
+        return array (  110 => 45,  73 => 10,  66 => 9,  53 => 5,  36 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("{% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-      <link href=\"{{ asset('css/accueil.css') }}\" type=\"text/css\" rel=\"stylesheet\" />
-    
-{% endblock %}
 
-{% block javascripts %}
-    <script src=\"{{ asset('js/accueil.js') }}\"></script>
-{% endblock %}
 
 {% block title %}Accueil{% endblock %}
 
@@ -330,6 +286,6 @@ class __TwigTemplate_88d7ee5c60a72a065fe99defb8bc6bdcadb992cf2051060511581690e33
 
 
 {% endblock %}
-", "accueil/index.html.twig", "/var/www/html/GSB-Frais/templates/accueil/index.html.twig");
+", "accueil/index.html.twig", "/var/www/html/GSB-Frais-Doctrine/templates/accueil/index.html.twig");
     }
 }
