@@ -64,6 +64,7 @@ class __TwigTemplate_6cf485eb71febc17f8846edeccb4a6d9730278d2ca72eba9302756abad2
         // line 11
         echo "    </body>
 </html>
+
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -90,6 +91,9 @@ class __TwigTemplate_6cf485eb71febc17f8846edeccb4a6d9730278d2ca72eba9302756abad2
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
+        echo " <link href=\"";
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/accueil.css"), "html", null, true);
+        echo "\" type=\"text/css\" rel=\"stylesheet\" />";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -114,6 +118,9 @@ class __TwigTemplate_6cf485eb71febc17f8846edeccb4a6d9730278d2ca72eba9302756abad2
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
+        echo " <script src=\"";
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/accueil.js"), "html", null, true);
+        echo "\"></script>";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -126,7 +133,7 @@ class __TwigTemplate_6cf485eb71febc17f8846edeccb4a6d9730278d2ca72eba9302756abad2
 
     public function getDebugInfo()
     {
-        return array (  111 => 10,  99 => 9,  87 => 6,  74 => 5,  65 => 11,  62 => 10,  60 => 9,  56 => 7,  54 => 6,  50 => 5,  44 => 1,);
+        return array (  115 => 10,  103 => 9,  88 => 6,  75 => 5,  65 => 11,  62 => 10,  60 => 9,  56 => 7,  54 => 6,  50 => 5,  44 => 1,);
     }
 
     public function getSourceContext()
@@ -136,13 +143,14 @@ class __TwigTemplate_6cf485eb71febc17f8846edeccb4a6d9730278d2ca72eba9302756abad2
     <head>
         <meta charset=\"UTF-8\">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %} <link href=\"{{ asset('css/accueil.css') }}\" type=\"text/css\" rel=\"stylesheet\" />{% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %} <script src=\"{{ asset('js/accueil.js') }}\"></script>{% endblock %}
     </body>
 </html>
-", "base.html.twig", "/var/www/html/GSB-Frais/templates/base.html.twig");
+
+", "base.html.twig", "/var/www/html/GSB-Frais-Doctrine/templates/base.html.twig");
     }
 }
