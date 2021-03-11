@@ -49,7 +49,7 @@ class __TwigTemplate_88d7ee5c60a72a065fe99defb8bc6bdcadb992cf2051060511581690e33
 
     }
 
-    // line 5
+    // line 3
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -62,14 +62,14 @@ class __TwigTemplate_88d7ee5c60a72a065fe99defb8bc6bdcadb992cf2051060511581690e33
 
     }
 
-    // line 9
+    // line 7
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 10
+        // line 8
         echo "
 
   <!-- slider start -->
@@ -106,7 +106,7 @@ class __TwigTemplate_88d7ee5c60a72a065fe99defb8bc6bdcadb992cf2051060511581690e33
                 <span> Visiteur</span>
                 <div>
                 <a href=\"";
-        // line 45
+        // line 43
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("seConnecterVisiteur");
         echo "\"  class=\"button\"> Compte Visiteur</a>
                 </div>
@@ -181,14 +181,12 @@ class __TwigTemplate_88d7ee5c60a72a065fe99defb8bc6bdcadb992cf2051060511581690e33
 
     public function getDebugInfo()
     {
-        return array (  110 => 45,  73 => 10,  66 => 9,  53 => 5,  36 => 1,);
+        return array (  110 => 43,  73 => 8,  66 => 7,  53 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("{% extends 'base.html.twig' %}
-
-
 
 {% block title %}Accueil{% endblock %}
 

@@ -42,8 +42,8 @@ class VisiteurController extends AbstractController
         $form = $this->createFormBuilder(array('allow_extra_field' => true))
                 ->add('identifiant',TextType::class, array('label' => 'Login : ','attr'=> array('class' => 'form-control','placeholder' =>'Login...')))
                 ->add('motDePasse',PasswordType::class, array('label' => 'Mot de Passe : ','attr'=> array('class' => 'form-control','placeholder' =>'****')))
-                ->add('valider',SubmitType::class, array('label' => 'Valider','attr'=> array('class' => 'btn btn-primary btn-block')))
-                ->add('annuler',ResetType::class, array('label' => 'Quitter','attr'=> array('class' => 'btn btn-danger btn-block')))
+                ->add('valider',SubmitType::class, array('label' => 'Se Connecter','attr'=> array('class' => 'btn btn-primary btn-block')))
+                
                 ->getForm();
 
         $visiteur = new Visiteur();
