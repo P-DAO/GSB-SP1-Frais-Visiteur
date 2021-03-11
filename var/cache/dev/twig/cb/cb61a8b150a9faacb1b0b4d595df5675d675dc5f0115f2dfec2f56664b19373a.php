@@ -49,7 +49,7 @@ class __TwigTemplate_88d7ee5c60a72a065fe99defb8bc6bdcadb992cf2051060511581690e33
 
     }
 
-    // line 3
+    // line 2
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -62,14 +62,14 @@ class __TwigTemplate_88d7ee5c60a72a065fe99defb8bc6bdcadb992cf2051060511581690e33
 
     }
 
-    // line 7
+    // line 6
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 8
+        // line 7
         echo "
 
   <!-- slider start -->
@@ -106,7 +106,7 @@ class __TwigTemplate_88d7ee5c60a72a065fe99defb8bc6bdcadb992cf2051060511581690e33
                 <span> Visiteur</span>
                 <div>
                 <a href=\"";
-        // line 43
+        // line 42
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("seConnecterVisiteur");
         echo "\"  class=\"button\"> Compte Visiteur</a>
                 </div>
@@ -181,13 +181,12 @@ class __TwigTemplate_88d7ee5c60a72a065fe99defb8bc6bdcadb992cf2051060511581690e33
 
     public function getDebugInfo()
     {
-        return array (  110 => 43,  73 => 8,  66 => 7,  53 => 3,  36 => 1,);
+        return array (  110 => 42,  73 => 7,  66 => 6,  53 => 2,  36 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("{% extends 'base.html.twig' %}
-
 {% block title %}Accueil{% endblock %}
 
 
@@ -284,6 +283,6 @@ class __TwigTemplate_88d7ee5c60a72a065fe99defb8bc6bdcadb992cf2051060511581690e33
 
 
 {% endblock %}
-", "accueil/index.html.twig", "/var/www/html/GSB-Frais-Doctrine/templates/accueil/index.html.twig");
+", "accueil/index.html.twig", "/var/www/html/GSB-Frais/templates/accueil/index.html.twig");
     }
 }

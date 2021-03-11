@@ -91,7 +91,7 @@ class __TwigTemplate_6cf485eb71febc17f8846edeccb4a6d9730278d2ca72eba9302756abad2
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
-        echo " <link href=\"";
+        echo "<link href=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/accueil.css"), "html", null, true);
         echo "\" type=\"text/css\" rel=\"stylesheet\" />";
         
@@ -118,7 +118,7 @@ class __TwigTemplate_6cf485eb71febc17f8846edeccb4a6d9730278d2ca72eba9302756abad2
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        echo " <script src=\"";
+        echo "<script src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/accueil.js"), "html", null, true);
         echo "\"></script>";
         
@@ -143,14 +143,14 @@ class __TwigTemplate_6cf485eb71febc17f8846edeccb4a6d9730278d2ca72eba9302756abad2
     <head>
         <meta charset=\"UTF-8\">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %} <link href=\"{{ asset('css/accueil.css') }}\" type=\"text/css\" rel=\"stylesheet\" />{% endblock %}
+        {% block stylesheets %}<link href=\"{{ asset('css/accueil.css') }}\" type=\"text/css\" rel=\"stylesheet\" />{% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %} <script src=\"{{ asset('js/accueil.js') }}\"></script>{% endblock %}
+        {% block javascripts %}<script src=\"{{ asset('js/accueil.js') }}\"></script>{% endblock %}
     </body>
 </html>
 
-", "base.html.twig", "/var/www/html/GSB-Frais-Doctrine/templates/base.html.twig");
+", "base.html.twig", "/var/www/html/GSB-Frais/templates/base.html.twig");
     }
 }

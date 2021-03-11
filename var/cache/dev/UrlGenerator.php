@@ -11,5 +11,5 @@ return [
     'choixMois' => [[], ['_controller' => 'App\\Controller\\VisiteurController::choixMois'], [], [['text', '/visiteur/choixMois']], [], []],
     'consulter' => [[], ['_controller' => 'App\\Controller\\VisiteurController::consulter'], [], [['text', '/visiteur/consulter']], [], []],
     'saisir' => [[], ['_controller' => 'App\\Controller\\VisiteurController::saisir'], [], [['text', '/visiteur/saisir']], [], []],
-    'CompteComptable' => [[], ['_controller' => 'App\\Controller\\ComptableController::comptable'], [], [['text', '/comptable/Compte']], [], []],
+    'CompteComptable' => [[], ['_controller' => 'App\\Controller\\ComptableController::comptable'], [], [['text', '/comptable/compte']], [], []],
 ];

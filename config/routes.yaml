@@ -44,5 +44,5 @@ saisir:
     
 #Menu comptable  
 CompteComptable:
-    path: /comptable/Compte
+    path: /comptable/compte
     controller: App\Controller\ComptableController::comptable

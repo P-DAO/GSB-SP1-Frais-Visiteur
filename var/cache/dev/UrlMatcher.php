@@ -15,7 +15,7 @@ return [
         '/visiteur/choixMois' => [[['_route' => 'choixMois', '_controller' => 'App\\Controller\\VisiteurController::choixMois'], null, null, null, false, false, null]],
         '/visiteur/consulter' => [[['_route' => 'consulter', '_controller' => 'App\\Controller\\VisiteurController::consulter'], null, null, null, false, false, null]],
         '/visiteur/saisir' => [[['_route' => 'saisir', '_controller' => 'App\\Controller\\VisiteurController::saisir'], null, null, null, false, false, null]],
-        '/comptable/Compte' => [[['_route' => 'CompteComptable', '_controller' => 'App\\Controller\\ComptableController::comptable'], null, null, null, false, false, null]],
+        '/comptable/compte' => [[['_route' => 'CompteComptable', '_controller' => 'App\\Controller\\ComptableController::comptable'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
