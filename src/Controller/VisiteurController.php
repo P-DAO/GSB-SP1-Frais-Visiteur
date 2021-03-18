@@ -69,7 +69,7 @@ class VisiteurController extends AbstractController
                     
                     $_SESSION['visiteur'] = $lesVisiteurs;
                   
-                    return $this->redirect('compte');
+                    return $this->redirect('CompteVisiteur');
             }
         }
         return $this->render('visiteur/seConnecterVisiteur.html.twig',array('form'=>$form->createView()));
@@ -80,6 +80,14 @@ class VisiteurController extends AbstractController
         return $this->render('visiteur/visiteur.html.twig', [
             'controller_name' => 'VisiteurController',
         ]);
+    }
+
+
+    public function seDeconnecterVisiteur(Request $request)
+    {   
+        $session = $request->getSession();
+        $session->clear();
+        return $this->redirect('connexion');
     }
 
     /*public function consulter(Request $request)
@@ -253,6 +261,4 @@ class VisiteurController extends AbstractController
         );
     }
     }
- 
-
-          
+    

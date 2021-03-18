@@ -19,7 +19,7 @@ seDeconnecterVisiteur:
 
 #Menu visiteur   
 CompteVisiteur:
-    path: /visiteur/compte
+    path: /visiteur/CompteVisiteur
     controller: App\Controller\VisiteurController::visiteur
     
 #Choix du mois
