@@ -124,13 +124,17 @@ class __TwigTemplate_9570f892baffd1653382248618a92de74fa7224f7ba126eda4e74dceb3a
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("consulter");
         echo "\">Consulter Frais</a>
                     </li>
+                    <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"";
+        // line 23
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("seDeconnecterVisiteur");
+        echo "\">Déconnexion</a>
+                    </li>
                 </ul>
             </div>
         </nav>
             
     </div>
-
-
     
 >>>>>>> gsb/master
 ";
@@ -152,9 +156,13 @@ class __TwigTemplate_9570f892baffd1653382248618a92de74fa7224f7ba126eda4e74dceb3a
     public function getDebugInfo()
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         return array (  98 => 26,  96 => 9,  93 => 8,  86 => 7,  78 => 28,  76 => 7,  69 => 6,  61 => 3,  54 => 2,  37 => 1,);
 =======
         return array (  98 => 20,  92 => 17,  83 => 13,  78 => 10,  75 => 9,  68 => 8,  60 => 3,  53 => 2,  36 => 1,);
+>>>>>>> gsb/master
+=======
+        return array (  104 => 23,  98 => 20,  92 => 17,  83 => 13,  78 => 10,  75 => 9,  68 => 8,  60 => 3,  53 => 2,  36 => 1,);
 >>>>>>> gsb/master
     }
 
@@ -187,13 +195,20 @@ class __TwigTemplate_9570f892baffd1653382248618a92de74fa7224f7ba126eda4e74dceb3a
                     <li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"{{ path('consulter') }}\">Consulter Frais</a>
                     </li>
+                    <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"{{ path('seDeconnecterVisiteur') }}\">Déconnexion</a>
+                    </li>
                 </ul>
             </div>
         </nav>
             
+<<<<<<< HEAD
     </div>#}
 
 
+=======
+    </div>
+>>>>>>> gsb/master
     
 {% endblock %}
 {# empty Twig template #}", "visiteur/visiteur.html.twig", "/var/www/html/GSB-Frais/templates/visiteur/visiteur.html.twig");

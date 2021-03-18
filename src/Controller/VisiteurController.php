@@ -136,7 +136,7 @@ class VisiteurController extends AbstractController
     {
         $session = $request->getSession();
         $session -> clear();
-        return $this->render('/');
+        return $this->redirect('connexion');
     }
 
 
@@ -176,7 +176,7 @@ class VisiteurController extends AbstractController
         ->add('save', SubmitType::class, array(
                                                 'label'=> 'Modifier' ,
                                                 'attr' => array('class'=> 'btn btn-outline-primary',
-                                                                'id' => 'btnSave')))
+                                                'id' => 'btnSave')))
         ->add('cancel', ResetType::class, array('label'=> 'Annuler' ,
                                                 'attr' => array('class'=> 'btn btn-outline-danger',
                                                                 'id' => 'btnSave')));

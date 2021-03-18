@@ -7,7 +7,7 @@ return [
     'index' => [[], ['_controller' => 'App\\Controller\\AccueilController::index'], [], [['text', '/']], [], []],
     'seConnecterVisiteur' => [[], ['_controller' => 'App\\Controller\\VisiteurController::seConnecterVisiteur'], [], [['text', '/visiteur/connexion']], [], []],
     'seDeconnecterVisiteur' => [[], ['_controller' => 'App\\Controller\\VisiteurController::seDeconnecterVisiteur'], [], [['text', '/visiteur/deconnexion']], [], []],
-    'CompteVisiteur' => [[], ['_controller' => 'App\\Controller\\VisiteurController::visiteur'], [], [['text', '/visiteur/compte']], [], []],
+    'CompteVisiteur' => [[], ['_controller' => 'App\\Controller\\VisiteurController::visiteur'], [], [['text', '/visiteur/CompteVisiteur']], [], []],
     'choixMois' => [[], ['_controller' => 'App\\Controller\\VisiteurController::choixMois'], [], [['text', '/visiteur/choixMois']], [], []],
     'consulter' => [[], ['_controller' => 'App\\Controller\\VisiteurController::consulter'], [], [['text', '/visiteur/consulter']], [], []],
     'saisir' => [[], ['_controller' => 'App\\Controller\\VisiteurController::saisir'], [], [['text', '/visiteur/saisir']], [], []],

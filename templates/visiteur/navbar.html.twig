@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {#<nav >
     <a href="#home">GSB</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,13 +62,68 @@
 
 {% block title %}
  Visiteur 
+=======
+{% extends "base.html.twig" %}
+{% block menu %}
+    <style>
+        body{
+            background-image: url({{ asset('img/b13.jpeg') }});
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        
+    </style>
+    
+    <div style="margin-top: 15px">    
+        <center>
+            <style>
+                .imgnav {
+                    border-radius: 25%;
+                }
+                
+                
+                .imgnav:hover {
+                        -webkit-transform: scaleX(-1);
+                         transform: scaleX(-1);
+                        }
+                
+            </style>
+           
+            
+            <a  href="{{ path('CompteComptable') }}">
+                <img class="imgnav" src="{{ asset('img/logo.png') }}" width="100" >
+            </a>
+        </center>
+    </div>
+    <br/>
+    
+>>>>>>> gsb/master
 {% endblock %}
-    {% block stylesheets %} <link href="{{ asset('css/navbar.css') }}" type="text/css" rel="stylesheet" />{% endblock %}
-   
+{% block nav %}
+    <div>
+        
+       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="{{ path('CompteVisiteur') }}">GSB<span class="sr-only">(current)</span></a>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('SaisirNouveauFrais') }}">Frais Nouveau</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('ConsultFrais') }}">Frais Consulter</a>
+                    </li>
+                </ul>
+            </div>
+            <h4 style="color: white;font-family: Times, Times New Roman, serif">{{ app.session.get('user_nom') }} {{ app.session.get('user_prenom') }}  </h4>         
+            <div style="float: right;margin-left: 10px">
+                <a class="btn btn-outline-danger" type="button" href="{{ path('deconnexionCompteVisiteur') }}"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
+            </div>
+        </nav>
+            
+    </div>
 
-{% block body %}
-
-
-<!--Navbar-->
-
+<<<<<<< HEAD
 {% endblock %}
+=======
+    {% endblock %}
+>>>>>>> gsb/master
