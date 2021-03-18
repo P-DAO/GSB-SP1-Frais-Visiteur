@@ -1,0 +1,24 @@
+<div class="container-fluid">
+
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+			
+			{% if modifMdp == 'Nok' %}
+				<p class="alert alert-danger" role="alert">Modification du mot de passe refusée.</p>
+			{% elif modifMdp == 'Ok' %}
+				<p class="alert alert-success" role="alert">Modification du mot de passe réalisée.</p>
+			{% endif %}
+			
+		</div>
+		<div class="col-md-4"></div>
+	</div>
+    <div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+            <h1>Gestionnaire de Mot  de passe</h1>
+            <!-- faire le formulaire -->
+
+        </div>
+    </div>
+</div

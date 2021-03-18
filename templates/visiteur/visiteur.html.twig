@@ -4,8 +4,8 @@
 {% endblock %}
 
 {% block body %}
-{% block nav %}
-    <div>
+    {% include 'visiteur/navbar.html.twig'%}
+    {#<div>
         
        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand">Bienvenue {{ app.session.get('nom') }} {{ app.session.get('prenom') }}<span class="sr-only"></span></a>
@@ -21,9 +21,7 @@
             </div>
         </nav>
             
-    </div>
-
-{% endblock %}
+    </div>#}
     
 {% endblock %}
 {# empty Twig template #}

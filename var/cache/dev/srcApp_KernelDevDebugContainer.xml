@@ -209,6 +209,13 @@
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\ComptableController"/>
       </call>
     </service>
+    <service id="App\Controller\SaisirController" class="App\Controller\SaisirController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\SaisirController"/>
+      </call>
+    </service>
     <service id="App\Controller\VisiteurController" class="App\Controller\VisiteurController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -2460,6 +2467,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ComptableController" class="App\Controller\ComptableController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ComptableController" class="App\Controller\ComptableController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ComptableController" class="App\Controller\ComptableController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\SaisirController" class="App\Controller\SaisirController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SaisirController" class="App\Controller\SaisirController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\SaisirController" class="App\Controller\SaisirController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\VisiteurController" class="App\Controller\VisiteurController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\VisiteurController" class="App\Controller\VisiteurController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\VisiteurController" class="App\Controller\VisiteurController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -2788,6 +2798,12 @@
     <service id=".service_locator.vdmMuyE.App\Controller\ComptableController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\ComptableController"/>
       <argument>App\Controller\ComptableController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\SaisirController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\SaisirController"/>
+      <argument>App\Controller\SaisirController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.vdmMuyE" method="withContext"/>
     </service>

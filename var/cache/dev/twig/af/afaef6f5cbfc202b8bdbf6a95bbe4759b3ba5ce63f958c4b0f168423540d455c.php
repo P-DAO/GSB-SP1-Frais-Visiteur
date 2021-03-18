@@ -52,16 +52,16 @@ class __TwigTemplate_6cf485eb71febc17f8846edeccb4a6d9730278d2ca72eba9302756abad2
         ";
         // line 6
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 7
+        // line 10
         echo "    </head>
     <body>
         ";
-        // line 9
+        // line 12
         $this->displayBlock('body', $context, $blocks);
-        // line 10
+        // line 13
         echo "        ";
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 11
+        // line 14
         echo "    </body>
 </html>
 
@@ -93,13 +93,22 @@ class __TwigTemplate_6cf485eb71febc17f8846edeccb4a6d9730278d2ca72eba9302756abad2
 
         echo "<link href=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/accueil.css"), "html", null, true);
-        echo "\" type=\"text/css\" rel=\"stylesheet\" />";
+        echo "\" type=\"text/css\" rel=\"stylesheet\" />
+            <link href=\"";
+        // line 7
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/bootstrap.css"), "html", null, true);
+        echo "\" type=\"text/css\" rel=\"stylesheet\" />
+            <link href=\"";
+        // line 8
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/navbar.css"), "html", null, true);
+        echo "\" type=\"text/css\" rel=\"stylesheet\" />
+        ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
     }
 
-    // line 9
+    // line 12
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -111,7 +120,7 @@ class __TwigTemplate_6cf485eb71febc17f8846edeccb4a6d9730278d2ca72eba9302756abad2
 
     }
 
-    // line 10
+    // line 13
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -133,7 +142,7 @@ class __TwigTemplate_6cf485eb71febc17f8846edeccb4a6d9730278d2ca72eba9302756abad2
 
     public function getDebugInfo()
     {
-        return array (  115 => 10,  103 => 9,  88 => 6,  75 => 5,  65 => 11,  62 => 10,  60 => 9,  56 => 7,  54 => 6,  50 => 5,  44 => 1,);
+        return array (  124 => 13,  112 => 12,  103 => 8,  99 => 7,  88 => 6,  75 => 5,  65 => 14,  62 => 13,  60 => 12,  56 => 10,  54 => 6,  50 => 5,  44 => 1,);
     }
 
     public function getSourceContext()
@@ -143,7 +152,10 @@ class __TwigTemplate_6cf485eb71febc17f8846edeccb4a6d9730278d2ca72eba9302756abad2
     <head>
         <meta charset=\"UTF-8\">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}<link href=\"{{ asset('css/accueil.css') }}\" type=\"text/css\" rel=\"stylesheet\" />{% endblock %}
+        {% block stylesheets %}<link href=\"{{ asset('css/accueil.css') }}\" type=\"text/css\" rel=\"stylesheet\" />
+            <link href=\"{{ asset('css/bootstrap.css') }}\" type=\"text/css\" rel=\"stylesheet\" />
+            <link href=\"{{ asset('css/navbar.css') }}\" type=\"text/css\" rel=\"stylesheet\" />
+        {% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}
