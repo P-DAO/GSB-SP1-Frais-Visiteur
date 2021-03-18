@@ -1,0 +1,89 @@
+body{
+    background-image: url("/img/visiteur.jpg" );
+}
+.well {
+    position: relative;
+    padding-top: 80px;
+}
+
+
+center {
+    color: white;
+    font-size: 25px;
+}
+
+h3 center {
+    font-family: 'Times New Roman', serif;
+    font-size: 50px;
+}
+
+/* Bordered form */
+form {
+    width:50%;
+    padding: 30px;
+    background: rgb(0, 0, 0); 
+    background: rgba(77, 204, 243, 0.5); 
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+@import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300';
+
+*{
+	font-family: 'Source Sans Pro', sans-serif;
+	box-sizing: border-box;
+	font-weight: 300;
+	padding: 0;
+	margin: 0;
+}
+
+#btn-form_valider{
+	position: fixed;
+	top: calc(50% - 22px);
+	left: 0;
+	width: 100%;
+	text-align: center;
+}
+
+#form_valider{
+	display: inline-block;
+	box-shadow: none;
+	appearance: none;
+	border: 0;
+	outline: 0;
+    background-color: #f5e2f0;
+	height: 45px;
+	line-height: 42px;
+	padding: 0 30px;
+	font-size: 20px;
+	border-radius: 30px;
+	color: rgb(40, 45, 50);
+	cursor: pointer;
+	transition: all .5s;
+	transition-timing-function: cubic-bezier(.2, 3, .4, 1);
+	user-select: none;
+	
+	
+}
+
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+input[type=submit] {
+    background-color: #53af57;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+
