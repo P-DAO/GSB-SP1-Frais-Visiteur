@@ -48,8 +48,10 @@ class FraisforfaitRepository extends ServiceEntityRepository
     }
     */
 
-    public function getFraisForfaitMois($ficheFrais){
-
+    public function getLesFraisForfait()
+    {
+        $requete = 'select ff from App\Entity\Fraisforfait ff';
+        return $this->getEntityManager()->createQuery( $requete )->getResult();
     }
    
 }

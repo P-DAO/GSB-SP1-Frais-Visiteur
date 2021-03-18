@@ -48,10 +48,31 @@ class FichefraisRepository extends ServiceEntityRepository
     }
     */
 
-    public function getFicheFrais($idVisiteur,$s)
+    public function getUneFicheFrais($idVisiteur,$date) //fonction pour afficher la fiche de l'historique
     {
-        
+        return $this->createQueryBuilder( 'ff' )
+                    ->join( 'ff.idEtat', 'e')
+                    ->addSelect('e')
+                    ->where('ff.idVisiteur = :idVisiteur')
+                    ->andWhere( 'ff.mois = :mois')
+                    ->setParameter( 'idVisiteur', $idvisiteur)
+                    ->setParameter( 'date', $date)
+                    ->getQuery()
+                    ->getResult();
     }
 
+    public function getFichesFrais($idVisiteur) 
+    {
+        return $this->createQueryBuilder('ff')
+                    ->join('ff.idEtat', 'e')
+                    ->addSelect('e')
+                    ->where('ff.idVisiteur = :idVisiteur')
+                    ->setParaeter('idVisiteur', $idVisiteur)
+                    ->orderBy('ff.mois')
+                    ->getQuery()
+                    ->getResult();
+    }
+
+    
 
 }

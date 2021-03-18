@@ -18,33 +18,16 @@ class LignefraisforfaitRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, LigneFraisForfait::class);
     }
-
-    // /**
-    //  * @return LigneFraisForfait[] Returns an array of LigneFraisForfait objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    
+    public function getFraisForfaitDuMois($idFicheFrais)
     {
-        return $this->createQueryBuilder('l')
-            ->andWhere('l.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('l.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        return $this->createQueryBuilder('lff')
+                    ->join('lff.idFicheFrais', 'ff', 'WITH', 'ff.id = :idFiche')
+                    ->join('lff.idFraisForfait', 'ffo')
+                    ->addSelect('ff')
+                    ->addSelect('ffo')
+                    ->setParameter('idFiche', $idFicheFrais )
+                    ->getQuery()
+                    ->getResult();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?LigneFraisForfait
-    {
-        return $this->createQueryBuilder('l')
-            ->andWhere('l.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

@@ -34,46 +34,6 @@ class VisiteurController extends AbstractController
             'controller_name' => 'VisiteurController',
         ]);
     }
-    
-    public function seConnecterVisiteur(Request $request)
-    {
-        
-
-        $form = $this->createFormBuilder(array('allow_extra_field' => true))
-                ->add('identifiant',TextType::class, array('label' => 'Login : ','attr'=> array('class' => 'form-control','placeholder' =>'Login...')))
-                ->add('motDePasse',PasswordType::class, array('label' => 'Mot de Passe : ','attr'=> array('class' => 'form-control','placeholder' =>'****')))
-                ->add('valider',SubmitType::class, array('label' => 'Valider','attr'=> array('class' => 'btn btn-primary btn-block')))
-                ->add('annuler',ResetType::class, array('label' => 'Quitter','attr'=> array('class' => 'btn btn-danger btn-block')))
-                ->getForm();
-
-        $visiteur = new Visiteur();
-        $request = Request::createFromGlobals();
-        $form->handleRequest($request);
-
-        
-
-        if ($form->isSubmitted() && $form->isValid()) {
-                
-            $identifiant = $form['identifiant']->getData();
-            $motDePasse = $form['motDePasse']->getData();
-            $lesVisiteurs = new Visiteur();
-            $lesVisiteurs = $this->getDoctrine()->getRepository(Visiteur::class)->seConnecterVisiteur($identifiant,$motDePasse);
-            
-
-            if($lesVisiteurs != null){
-                    $_SESSION = array();
-                    $session = new Session();
-                    $session->set('nom',$lesVisiteurs->getNom());
-                    $session->set('prenom',$lesVisiteurs->getPrenom());
-                    $session->set('id',$lesVisiteurs->getId());
-                    
-                    $_SESSION['visiteur'] = $lesVisiteurs;
-                  
-                    return $this->redirect('compte');
-            }
-        }
-        return $this->render('visiteur/seConnecterVisiteur.html.twig',array('form'=>$form->createView()));
-    }
 
     public function CompteVisiteur()
     {
@@ -81,100 +41,106 @@ class VisiteurController extends AbstractController
             'controller_name' => 'VisiteurController',
         ]);
     }
+    
+    public function seConnecterVisiteur(Request $request)
+    {
+        
 
-    /*public function consulter(Request $request)
-    {   
-
-        $session = $request->getSession();
-        $id = $session->get('id');
-
-        $formulaire = $this->createFormBuilder(array('allow_extra_field' => true))
-                ->add('mois',ChoiceType::class,['choices'=>['Janvier'=>'01',
-                                                            'Février'=>'02',
-                                                            'Mars'=>'03',
-                                                            'Avril'=>'04',
-                                                            'Mai'=>'05',
-                                                            'Juin'=>'06',
-                                                            'Juillet'=>'07',
-                                                            'Août'=>'08',
-                                                            'Septembre'=>'09',
-                                                            'Octobre'=>'10',
-                                                            'Novembre'=>'11',
-                                                            'Décembre'=>'12',]
-                                            ])
-                ->add('annee', ChoiceType::class, ['choices'=>[Date ('Y')=>Date ('Y'),
-                                                            Date ('Y') -1  =>Date ('Y')-1,
-                                                            Date ('Y') -2  =>Date ('Y')-2,
-                                                            Date ('Y') -3  =>Date ('Y')-3,
-                                                            Date ('Y') -4  =>Date ('Y')-4,
-                                                            Date ('Y') -5  =>Date ('Y')-5,
-                                                            Date ('Y') -6  =>Date ('Y')-6,
-                                                            Date ('Y') -7  =>Date ('Y')-7,
-                                                            Date ('Y') -8  =>Date ('Y')-8,
-                                                            Date ('Y') -9  =>Date ('Y')-9,
-                                                            Date ('Y') -10  =>Date ('Y')-10,]
-                ])
-
-                ->add('valider',SubmitType::class)
-                ->add('annuler',ResetType::class) 
+        $form = $this->createFormBuilder(array('allow_extra_field' => true))
+                ->add('identifiant',TextType::class, array('label' => 'Login : ',
+                                                            'attr'=> array('class' => 'form-control','placeholder' =>'Login...')))
+                ->add('motDePasse',PasswordType::class, array('label' => 'Mot de Passe : ',
+                                                                'attr'=> array('class' => 'form-control','placeholder' =>'****')))
+                ->add('valider',SubmitType::class, array('label' => 'Valider',
+                                                        'attr'=> array('class' => 'btn btn-primary btn-block')))
+                ->add('annuler',ResetType::class, array('label' => 'Quitter',
+                                                        'attr'=> array('class' => 'btn btn-danger btn-block')))
                 ->getForm();
 
-                $formulaire = Request::createFromGlobals();
-                if ($formulaire->isSubmitted() && $formulaire->isValid()) {
+        
+        $request = Request::createFromGlobals();
+        $form->handleRequest($request);
 
-                        $em = $this->getDoctrine()->getManager();
+        
 
-                        $mois = date("m");
-                        $annee = date("Y");
-                        $s=sprintf("%02d%04d" , $mois , $annee);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+                
+            $identifiant = $form['identifiant']->getData();
+            $motDePasse = $form['motDePasse']->getData();
+            $visiteur = new Visiteur();
+            $visiteur = $em->getRepository(Visiteur::class)->seConnecterVisiteur($identifiant,$motDePasse);
+            
 
-                        $ficheFrais = $em->getRepository('FicheFrais::class')->getFicheFrais($id,$s);
+            if($visiteur != null){
+                $_SESSION = array();
+                $session = new Session();
+                $session->set('nom',$visiteur->getNom());
+                $session->set('prenom',$visiteur->getPrenom());
+                $session->set('id',$visiteur->getId());
+                    
+                $_SESSION['visiteur'] = $visiteur;
 
-                        dump($ficheFrais);
+                $idVis = $session->get('id');
+                $month = date('m');
+                $year = date("Y");
+                $date = sprintf("%02d%04d", $month, $year);
 
+                $ficheFrais = $em-> getRepository(Fichefrais::class)->getUneFicheFrais($idVis, $date);
+                $fraisForfait = $em->getRepository(Fraisforfait::class)-> getLesFraisForfait();
+
+                if($ficheFrais===null){
+                    $ficheFraisCreer = new Fichefrais();
+
+                    $etat = $em->getRepository(Etat::class)->find("CR");
                         
-                }  
-                return $this->render('visiteur/consulter.html.twig',array('form'=>$formulaire->createView()));  
+                    $ficheFraisCreer->setIdVisiteur($idVis);
+                    $ficheFraisCreer->setMois($date);
+                    $ficheFraisCreer->setNbJustificatifs(0);
+                    $ficheFraisCreer->setMontant(0);
+                    $ficheFraisCreer->setIdEtat($etat[0]);
+
+                    if(!$em->contains($ficheFraisCreer)){
+                        foreach($ficheFrais  as $uneFicheFrais){
+                            $ligneFraisForfait = new LigneFraisForfait();
+
+                            $ligneFraisForfait->setIdFicheFrais($ficheFraisCreer);
+                            $ligneFraisForfait->setIdFraisForfait($ficheFraisCreer);
+                            $ligneFraisForfait->setIdVisiteur($idVis);
+                            $ligneFraisForfait->setMois($date);
+                            $ligneFraisForfait->setQuantite(0);
+
+                            $em->persist($ligneFraisForfait);
+                        }
+                        $em->persist($ficheFraisCreer);
+                        $em->flush();
+
+                    }
+                             
+                    return $this->redirect('compte');
+                }
+            }
+            else{
+                return $this->render('visiteur/seConnecterVisiteur.html.twig', array(
+                    'form'=>$form->createView(),
+                    'erreur'=> 'false'
+                ));
+            }
+        }
+        else{
+            return $this->render('visiteur/seConnecterVisiteur.html.twig',array('form'=>$form->createView()));
+        }
+    }
+
+    public function seDeconnecter(Request $request)
+    {
+        $session = $request->getSession();
+        $session -> clear();
+        return $this->render('/');
     }
 
 
-
-        public function saisir(Request $request) {
-           
-            $formulaire = $this->createFormBuilder(array('allow_extra_field' => true))
-                ->add('etape',TextType::class, array('label' => 'Forfait Etape ' ))
-                ->add('km',TextType::class, array('label' => 'Frais Kilométrique' ))
-                ->add('nuitee',TextType::class, array('label' => 'Nuitée Hôtel' ))
-                ->add('repas',TextType::class, array('label' => 'Repas Restaurant' ))
-                ->add('save',SubmitType::class, array('label' => 'Valider','attr'=> array('class' => 'btn btn-primary btn-block')))
-                ->add('cancel',ResetType::class, array('label' => 'Quitter','attr'=> array('class' => 'btn btn-danger btn-block')))
-                ->getForm();
-                if ($formulaire->isSubmitted() && $formulaire->isValid()) {
-
-                    $etape = $form['etape']->getData();
-                    $km = $form['km']->getData();
-                    $nuitee = $form['nuitee']->getData();
-                    $repas = $form['repas']->getData();
-
-                    $FicheFrais = new FicheFrais();
-                    $FicheFrais->setDateModif(new \DateTime());
-                    $FicheFrais->setIdVisiteur($visiteur);
-                    $FicheFrais->setMois($mois);
-                    $FicheFrais->setMontantValide(0);
-                    $FicheFrais->setNbJustificatifs(0);
-                    $FicheFrais->setIdEtat($etat);
-                    $entityManager->persist($FicheFrais);
-                    $entityManager->flush();
-
-
-                   
-                }    
-
-            return $this->render('visiteur/saisir.html.twig',array('form'=>$formulaire->createView()));
-        }*/
-         
-     
-        public function saisir(Request $request)
+    public function saisir(Request $request)
     {
         $session = $request->getSession();
         $id = $session->get('id');
@@ -183,8 +149,10 @@ class VisiteurController extends AbstractController
 
         $month = date("m");
         $year = date("Y");
+        $date = sprintf("%02d%04d");
+        dump($date);
 
-        $ficheFrais = $em->getRepository(FicheFrais::class)->getFicheFrais($id,$date);
+        $ficheFrais = $em->getRepository(Fichefrais::class)->getFicheFrais($id,$date);
 
         dump($ficheFrais);
 
@@ -199,20 +167,19 @@ class VisiteurController extends AbstractController
             $quantite = $laLigneFf->getQuantite();
 
             $formBuilder->add($idFf, TextType::class, array(
-                'label' => $nomFf,
-                'attr' => array('class' => 'form-control',
-                    'value' => $quantite,)
+                                                            'label' => $nomFf,
+                                                            'attr' => array('class' => 'form-control',
+                                                                            'value' => $quantite,)
             ));
         }
         $formBuilder
         ->add('save', SubmitType::class, array(
-        'label'=> 'Modifier' ,
-        'attr' => array('class'=> 'btn btn-outline-primary',
-            'id' => 'btnSave')))
-        ->add('cancel', ResetType::class, array(
-            'label'=> 'Annuler' ,
-            'attr' => array('class'=> 'btn btn-outline-danger',
-                'id' => 'btnSave')));
+                                                'label'=> 'Modifier' ,
+                                                'attr' => array('class'=> 'btn btn-outline-primary',
+                                                                'id' => 'btnSave')))
+        ->add('cancel', ResetType::class, array('label'=> 'Annuler' ,
+                                                'attr' => array('class'=> 'btn btn-outline-danger',
+                                                                'id' => 'btnSave')));
 
         $form = $formBuilder->getForm();
 
@@ -248,11 +215,11 @@ class VisiteurController extends AbstractController
         }
 
         return $this->render(
-            'profil/saisir.html.twig',
+            'visiteur/saisir.html.twig',
             array('form' => $form->createView())
         );
     }
-    }
+}
  
 
           
