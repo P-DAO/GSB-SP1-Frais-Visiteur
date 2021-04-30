@@ -1,3 +1,253 @@
-{{app.session.get('nom') }} {{ app.session.get('prenom') }}
+{% extends "base.html.twig" %}
+{% block title %}
+	Consulter
+{% endblock %}
 
-{{form(form)}}
+
+{% block body %}
+{% include 'visiteur/navbar.html.twig' %}
+<br>
+{# AFFICHAGE DE la rechercher à gauche#}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-5">
+			{% block recherche %}
+				<div style="padding: 1rem 1rem;" class="jumbotron jumbotron-fluid">
+					<div class="container-fluid text-center">
+						<h3>Sélection d'une Fiche Frais</h3>
+					</div>
+				</div>
+				<div class="container">
+					<h4>Recherchez une fiche</h4><br>
+					<div class="container-fluid">
+						{{ form_start(formDate) }}
+						<div class="form-group">
+							<div class="row">
+								<div class="col">
+									{{ form_row(formDate.mois) }}
+								</div>
+								<div class="col">
+									{{ form_row(formDate.annee) }}
+								</div>
+								<div class="col">
+									<button type="submit" class="btn btn-primary">Rechercher</button>
+								</div>
+							</div>
+						</div>
+						{{ form_end(formDate) }}
+					</div>
+				</div>
+
+				<div class="container">
+					<div class="row">
+						<div class="col text-center">
+							<a class="btn btn-outline-primary " href="{{ path('choixMois') }}">
+								Lister toutes les fiches archivées
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<br>
+				<hr>
+					
+				{# Tableau des fiche #}
+				{% if fiches == null %}
+					<div style="padding: 5rem 1rem;" class="jumbotron jumbotron-fluid">
+						<div class="container-fluid text-center">
+							Aucune fiche frais
+						</div>
+					</div>
+				{% else %}
+					<table class="table table-hover">
+						<thead>
+							<tr class="table-primary">
+								<th scope="col">#</th>
+								<th scope="col">Période</th>
+								<th scope="col">Justificatifs</th>
+								<th scope="col">Montant validé</th>
+								<th scope="col">Dernière modification</th>
+								<th scope="col">Etat</th>
+							</tr>
+						</thead>
+						<tbody>
+							{#BOUCLE POUR FAIRE DEFILER LES RAPPORTS ET LES AFFICHERS#}
+							{% for laFiche in fiches %}
+								<tr class="table-light" id="selection" style="cursor: pointer" onclick="location.href='{{ path( 'consulter') }}">
+									<th scope="row">{{ loop.index }}</th>
+									<td>{{ laFiche['mois'] }}</td>
+									<td>{{ laFiche['nbjustificatifs'] }}</td>
+									<td>{{ laFiche['montantvalide'] }}</td>
+									<td>{{ laFiche['datemodif'] | date('d/m/Y') }}</td>
+									<td>{{ laFiche['idetat'] }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				{% endif %}
+			{% endblock recherche %}
+		</div>
+
+		{# AFFICHAGE de la Fiche Frais à GAUCHE #}
+		 <div class="col-7">
+			{% block ficheFrais %}
+                <div style="padding: 1rem 1rem;" class="jumbotron jumbotron-fluid">
+                    <div class="container-fluid text-center">
+                        <h3>Fiche sélectionnée</h3>
+                    </div>
+                </div>
+
+                {# PAS DE FICHE SELECTIONNEE #}
+                {% if selection == false %}
+                    <div style="padding: 10rem 1rem;" class="jumbotron jumbotron-fluid">
+                        <div class="container-fluid text-center">
+                            Aucune fiche n'a été sélectionnée pour le moment
+                        </div>
+                    </div>
+                {# AFFICHER LA FICHE SELECTIONNEE #}
+                {% else %}
+                    {% if datemodif %}
+                        <div class="container2">
+                            <h5>Dernière modification le : {{ dateModif | date("d/m/Y") }}</h5>
+                        </div>
+                    {% endif %}
+                    <div class="jumbotron jumbotron-fluid">
+                        <div class="container">
+                            <h1> Fiche des frais </h1>
+                            <h3>{{ dateDebut }} - {{ dateFin }}</h3>
+                        </div>
+                    </div>
+                    {#TOTAUX DE LA FICHE#}
+                    <table class="table">
+                        <tr>
+                            <th class="table-info" id="bordureLeft" scope="row">{{ "état " | title }}de la fiche : </th>
+                            <td colspan="3" class="table-info" id="bordureRight" >{{ etat }}</td>
+                        </tr>
+                        <tr>
+                            <th class="table-info" id="bordureLeft" scope="row">Total des frais : </th>
+                            <td class="table-info" id="bordureRight" >{{ totalFiche }}€</td>
+                            <th class="table-warning" id="bordureLeft" scope="row">Frais validés : </th>
+                            <td class="table-warning" id="bordureRight" >{{ totalValide }}€</td>
+                        </tr>
+                    </table>
+                    <br>
+                    <div class="container">
+                        <h3>Récapitulatif des frais forfaitisés</h3>
+                    </div>
+                    {# S'IL Y A DES FRAIS FORFAIT A AFFICHER#}
+                    {% if lesFraisForfaits %}
+                        {#CREATION TABLE RESPONSIVE#}
+                        <table class="table">
+                            <thead class="thead-light">
+								<tr>
+									{#POUR CHAQUE FRAIS FORFAIT ON AFFICHE L'INTITULE DU FRAIS FORFAIT#}
+									<th scope="col">{{ "forfait" | title }}</th>
+									{% for leFraisForfaits  in lesFraisForfaits %}
+										<th scope="col">{{ leFraisForfaits["libelleFraisForfait"] | title }}</th>
+									{% else %}
+										La liste est Vide
+									{% endfor %}
+								</tr>
+                            </thead>
+                            <tbody>
+								<tr>
+									{#POUR CHAQUE FRAIS FORFAIT ON AFFICHE LE MONTANT DU FRAIS FORFAIT#}
+									<th scope="row">{{ "prix unitaire" | upper }}</th>
+									{% for leFraisForfaits  in lesFraisForfaits %}
+										<td>{{ leFraisForfaits["montantFraisForfait"] }}€</td>
+									{% else %}
+										La liste est Vide
+									{% endfor %}
+								</tr>
+								<tr>
+									{#POUR CHAQUE FRAIS FORFAIT ON AFFICHE LA QUANTITE DU FRAIS FORFAIT#}
+									<th scope="row">{{ "quantité" | upper }}</th>
+									{% for leFraisForfaits  in lesFraisForfaits %}
+										<td>{{ leFraisForfaits["quantite"] }}</td>
+									{% else %}
+										La liste est Vide
+									{% endfor %}
+								</tr>
+								<tr>
+									{#POUR CHAQUE FRAIS FORFAIT ON AFFICHE LE TOTAL DES FORFAIT#}
+									<th scope="row">{{ "frais" | upper }}</th>
+									{% for leFraisForfaits  in lesFraisForfaits %}
+										<td>{{ leFraisForfaits["quantite"] * leFraisForfaits["montantFraisForfait"] }}€ </td>
+									{% else %}
+										La liste est Vide
+									{% endfor %}
+								</tr>
+								<tr style="background-color: #28a74599" id="bordure">
+									{#POUR CHAQUE FRAIS FORFAIT ON AFFICHE LE TOTAL DES FRAIS FORFAIT#}
+									<th scope="row" >{{ "total" | upper }}</th>
+									<td id="placeTotal" colspan="{{ lesFraisForfaits | length }}">{{ totalFraisForfait }}€ </td>
+								</tr>
+                            </tbody>
+                        </table>
+                        {# S'IL N'Y A PAS DE FRAIS FORFAIT A AFFICHER -> proposer renvoie page de saisie #}
+                    {% else %}
+                        <div class="jumbotron jumbotron-fluid">
+                            <div class="container">
+                                <h4>Aucun frais forfaitaire n'a été ajouté pour le moment</h4>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <br><hr><br>
+                    <div class="container">
+                        <h3>Récapitulatif des frais non forfaitisés</h3>
+                    </div>
+                    {# S'IL Y A DES FRAIS HORS FORFAIT A AFFICHER#}
+                    {% if lesFraisHorsForfaits %}
+                        {#CREATION TABLE RESPONSIVE#}
+                        <table class="table">
+                            <thead class="thead-light">
+								<tr>
+									{#HEADER TABLE#}
+									<th scope="col"></th>
+									<th scope="col">{{ "date" | title }}</th>
+									<th scope="col">{{ "description" | title }}</th>
+									<th scope="col">{{ "montant" | title }}</th>
+								</tr>
+                            </thead>
+                            <tbody>
+                            {#POUR CHAQUE FRAIS HORS FORFAIT ON AFFICHE LES INFOS#}
+								{% for leFraisHorsForfaits  in lesFraisHorsForfaits %}
+									<tr>
+										<th scope="row">{{ loop.index }}</th>
+										<td>{{ leFraisHorsForfaits["date"] | date('d/m/Y') }}</td>
+										<td>{{ leFraisHorsForfaits["libelle"] }}</td>
+										<td>{{ leFraisHorsForfaits["montant"] }}€</td>
+									</tr>
+								{% else %}
+									La liste est Vide
+								{% endfor %}
+								<tr style="background-color: #28a74599" id="bordure">
+									{#POUR CHAQUE FRAIS FORFAIT ON AFFICHE LE TOTAL DES FRAIS FORFAIT#}
+									<th scope="row" >{{ "total" | upper }}</th>
+									<td id="placeTotal" colspan="3">{{ totalFraisNonForfait }}€ </td>
+								</tr>
+								<tr style="background-color: #b1575099" id="bordure">
+									{#POUR CHAQUE FRAIS FORFAIT ON AFFICHE LE TOTAL DES FRAIS FORFAIT#}
+									<th scope="row" colspan="2">{{ "Nombre de justificatifs fournis" | upper }}</th>
+									<td colspan="2">{{ nbJustificatif }} </td>
+								</tr>
+                            </tbody>
+                        </table>
+                        {# S'IL N'Y A PAS DE FRAIS HORS FORFAIT A AFFICHER -> proposer renvoie page de saisie #}
+                    {% else %}
+                        <div class="jumbotron jumbotron-fluid">
+                            <div class="container">
+                                <h4>Aucun frais non forfaitisé n'a été ajouté pour le moment</h4>
+                                <!--ee-->
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endif %}
+
+                {% endblock ficheFrais %}
+            </div>
+        </div>
+		
+    </div>
+</div>	
+{% endblock %}
