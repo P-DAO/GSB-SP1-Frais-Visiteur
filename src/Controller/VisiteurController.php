@@ -46,20 +46,86 @@ class VisiteurController extends AbstractController
 
         if($formVisiteur->isSubmitted() && $formVisiteur->isValid()){
             $doctrine = $this->getDoctrine();
+            $em= $this->getDoctrine()->getManager();
             $login = $formVisiteur['login']->getData();
             $mdp=$formVisiteur['mdp']->getData();
             $visiteur = $doctrine->getRepository(Visiteur::class)->seConnecterVisiteur($login, $mdp);
             //dump($visiteur);
             $idVis = $visiteur->getId();
-            
-            if($visiteur != null){
+//-------------------     test de la crétion de la fiche à la connexion 
+            if(!empty($visiteur)){
+                $idVis = $visiteur->getId();
+
+                // Obtenit la date        
+                if(date("d") > 17 ){
+                    $month = date("m");
+                    $year = date("Y");
+                }
+                else{
+                    if(date("m") == 01){
+                        $month = 12;
+                        $year = date("Y")-1;
+                    }
+                    else{
+                        $month = date("m")-1;
+                        $year = date("Y");
+                    }  
+                }
+                $date = sprintf("%02d%04d", $month, $year);
+                //dump($date);
+
+                //existe -t-il une fiche pour ce mois
+                $ficheFrais = $doctrine->getRepository(Fichefrais::class)->getUneFicheFraisExiste($idVis, $date);
+                //dump($ficheFrais);
+                $fraisForfait = $doctrine->getRepository(Fraisforfait::class)->getLesFraisForfait();
+
                 $session = new Session();
+
+                if($ficheFrais === null){ 
+                    $ficheFraisNew = new FicheFrais();
+
+                    $etat = $doctrine->getRepository(Etat::class)->find("CR");
+                    $dateNow = new \DateTime("now");
+
+                    $ficheFraisNew->setMois($date);
+                    $ficheFraisNew->setNbjustificatifs(0);
+                    $ficheFraisNew->setMontantvalide(0);
+                    $ficheFraisNew->setDatemodif($dateNow);
+                    $ficheFraisNew->setIdetat($etat);
+                    $ficheFraisNew->setIdvisiteur($visiteur);
+                    dump($ficheFraisNew);
+
+                    $em->persist($ficheFraisNew);
+
+                    if($em->contains($ficheFraisNew)){
+                        foreach($fraisForfait as $unFraisForfait){
+                            $ligneFraisForfait = new LigneFraisForfait();
+
+                            $ligneFraisForfait->setIdVisiteur($visiteur);
+                            $ligneFraisForfait->setMois($date);
+                            $ligneFraisForfait->setIdFraisForfait($unFraisForfait);
+                            $ligneFraisForfait->setQuantite(0); 
+                            dump($ligneFraisForfait);
+                            $em->persist($ligneFraisForfait);
+                            
+                        }
+                        $em->flush();
+                    }
+                }
+//-------------------         
                 $session->set('nom',$visiteur->getNom());
                 $session->set('prenom',$visiteur->getPrenom());
                 $session->set('id',$visiteur->getId());
                 $_SESSION['visiteur'] = $visiteur;
+
                 dump($session);
                 return $this->redirect('saisir');
+            }
+            else{
+                return $this->render('visiteur/seConnecterVisiteur.html.twig', [
+                    'formVisiteur'=>$formVisiteur->createView(), 
+                    'erreur' => false,  
+                ]);
             }
         }
 
@@ -68,8 +134,7 @@ class VisiteurController extends AbstractController
         ]);
     }
 
-    public function saisir(Request $request)
-    {
+    public function saisir(Request $request){
         $em= $this->getDoctrine()->getManager();
         $doctrine = $this->getDoctrine();
 
@@ -92,103 +157,16 @@ class VisiteurController extends AbstractController
         }
         $date = sprintf("%02d%04d", $month, $year);
         dump($date);
+//------------------------------test pour la saisie
 
-        $ficheFrais = $doctrine->getRepository(Fichefrais::class)->getUneFicheFraisExiste($idVis, $date);
-        $fraisForfait = $doctrine->getRepository(Fraisforfait::class)->getLesFraisForfait();
-        /*
-        if($ficheFrais === null){
-            $ficheFraisNew = new FicheFrais();
-
-            $etat = $doctrine->getRepository(Etat::class)->find("CR");
-            $dateNow = new \DateTime("now");
-
-            $ficheFraisNew->setIdVisiteur($visiteur[0]);
-            $ficheFraisNew->setDate($dateNow);
-            $ficheFraisNew->setNbJustificatif(0);
-            $ficheFraisNew->setMontantValide(0);
-            $ficheFraisNew->setDateModif($dateNow);
-            $ficheFraisNew->setIdEtat($etat[0]);
-
-            $em->persist($ficheFraisNew);
-            $em->flush();
-
-            foreach ($fraisForfait as $unFraisForfait){
-
-                $ligneFraisForfait = new LigneFraisForfait();   
-                $ligneFraisForfait->setIdVisiteur($visiteur);
-                $ligneFraisForfait->setMois($date);
-                $ligneFraisForfait->setIdFraisForfait($unFraisForfait);
-                $ligneFraisForfait->setQuantite(0); 
-                $em->persist($ligneFraisForfait);
-                $em->flush();
-
-            }
-        }
-        else{
-            $ficheFrais = $em->getRepository(Fichefrais::class)->getUneFicheFrais($idVis, $date);
-            $ligneFraisForfait = $em->getRepository(LigneFraisForfait::class)->getFraisForfaitDuMois($idVis, $date);
-
-        }
-        ///-------
-        $formBuilder = $this->createFormBuilder(array('allow_extra_field' => true));
-
-        foreach( $ligneFraisForfait as $laLigneFf ){
-            $idFf = $laLigneFf->getIdFraisForfait()->getId();
-            $nomFf = $laLigneFf->getIdFraisForfait()->getLibelle();
-            $quantite = $laLigneFf->getQuantite();
-
-            $formBuilder->add($idFf, TextType::class, array(
-                'label' => $nomFf,
-                'attr' => array('class' => 'form-control',
-                                'value' => $quantite,)
-            ));
-        }
-        $formBuilder
-        ->add('save', SubmitType::class, array(
-                'label'=> 'Modifier' ,
-                'attr' => array('class'=> 'btn btn-outline-primary',
-                                'id' => 'btnSave')))
-        ->add('cancel', ResetType::class, array(
-                'label'=> 'Annuler' ,
-                'attr' => array('class'=> 'btn btn-outline-danger',
-                                'id' => 'btnSave')));
-
-        $form = $formBuilder->getForm();
-
-        $request = Request::createFromGlobals();
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $data = $form->getData();
-
-            foreach ($ligneFraisForfait as $uneLigneFf){
-
-                foreach ($data as $oneData){
-
-                    if($uneLigneFf->getIdFraisForfait()->getId() == key ($data)){
-
-                        $quantite = $oneData;
-                        $uneLigneFf->setQuantite($quantite);
-
-                    }
-
-                }
-
-            }
-
-            $em->flush();
-
-
-        }*/
-        //-------
+//------------------------------
+       
         return $this->render('saisir/show.html.twig',[
             'controller_name' => 'VisiteurController'
         ]);
     }
 
-    public function seDeconnecter(Request $request)
-    {
+    public function seDeconnecter(Request $request){
         $session = $request->getSession();
         $session -> clear();
         return $this->redirect('connexion');
