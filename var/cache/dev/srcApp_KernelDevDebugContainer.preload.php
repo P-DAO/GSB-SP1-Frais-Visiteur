@@ -10,11 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).'/vendor/autoload.php';
-<<<<<<< HEAD
-require __DIR__.'/Container7kerkzA/srcApp_KernelDevDebugContainer.php';
-=======
-require __DIR__.'/Container2dBpO5o/srcApp_KernelDevDebugContainer.php';
->>>>>>> gsb/master
+require __DIR__.'/ContainerGACKXi5/srcApp_KernelDevDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -25,13 +21,16 @@ $classes[] = 'Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle';
 $classes[] = 'Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle';
 $classes[] = 'Symfony\Bundle\MakerBundle\MakerBundle';
 $classes[] = 'Symfony\Bundle\WebServerBundle\WebServerBundle';
+$classes[] = 'Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\EventListener\ResolveControllerNameSubscriber';
 $classes[] = 'Symfony\Component\DependencyInjection\ServiceLocator';
 $classes[] = 'App\Controller\AccueilController';
 $classes[] = 'App\Controller\ComptableController';
-$classes[] = 'App\Controller\SaisirController';
 $classes[] = 'App\Controller\VisiteurController';
+$classes[] = 'App\Form\LigneFraisForfaitType';
+$classes[] = 'App\Form\LoginVisiteurType';
+$classes[] = 'App\Form\VisiteurType';
 $classes[] = 'App\Repository\EtatRepository';
 $classes[] = 'App\Repository\FichefraisRepository';
 $classes[] = 'App\Repository\FraisforfaitRepository';
@@ -117,6 +116,9 @@ $classes[] = 'Symfony\Bridge\Doctrine\Logger\DbalLogger';
 $classes[] = 'Doctrine\DBAL\Logging\DebugStack';
 $classes[] = 'Symfony\Bridge\Doctrine\ContainerAwareEventManager';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Command\Proxy\EnsureProductionSettingsDoctrineCommand';
+$classes[] = 'Doctrine\Bundle\FixturesBundle\Command\LoadDataFixturesDoctrineCommand';
+$classes[] = 'Doctrine\Bundle\FixturesBundle\Loader\SymfonyFixturesLoader';
+$classes[] = 'Doctrine\Bundle\FixturesBundle\Purger\ORMPurgerFactory';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Command\Proxy\ConvertMappingDoctrineCommand';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Command\ImportMappingDoctrineCommand';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Command\Proxy\InfoDoctrineCommand';

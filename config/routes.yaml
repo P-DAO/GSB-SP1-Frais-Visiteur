@@ -12,30 +12,35 @@ seConnecterVisiteur:
     path: /visiteur/connexion
     controller: App\Controller\VisiteurController::seConnecterVisiteur
 
+#Saisir fiche de Visiteur    
+saisir:
+    path: /visiteur/saisir
+    controller: App\Controller\VisiteurController::saisir
+
 #Se deconnecter compte visiteur
 seDeconnecterVisiteur:
     path: /visiteur/deconnexion
-    controller: App\Controller\VisiteurController::seDeconnecterVisiteur
-
-#Menu visiteur   
-CompteVisiteur:
-    path: /visiteur/CompteVisiteur
-    controller: App\Controller\VisiteurController::visiteur
-    
+    controller: App\Controller\VisiteurController::seDeconnecter
+ 
 #Choix du mois
 choixMois:
-    path: /visiteur/choixMois
+    path: /visiteur/consulter
     controller: App\Controller\VisiteurController::choixMois
 
 #Consulter
 consulter:
     path: /visiteur/consulter
     controller: App\Controller\VisiteurController::consulter
-    
-#Saisir fiche de Visiteur    
-saisir:
-    path: /visiteur/saisir
-    controller: App\Controller\VisiteurController::saisir
+
+#Modifier mot de passe
+modifierMdp:
+    path: /visiteur/modifierMdp
+    controller: App\Controller\VisiteurController::modifierMdp
+
+#Modifier données Personnelles
+personnelles:
+    path: /visiteur/personnelles
+    controller: App\Controller\VisiteurController::personnelles
     
 #Se connecter au compte comptable   
 #seConnecterC:

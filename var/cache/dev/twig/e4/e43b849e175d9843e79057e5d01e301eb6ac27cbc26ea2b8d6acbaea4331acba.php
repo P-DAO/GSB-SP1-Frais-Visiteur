@@ -43,6 +43,9 @@ class __TwigTemplate_e867fe1c9e950ee5a81854ed6ce9a33662a2a22bdcf9d5674ad0e0b80df
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "visiteur/seConnecterVisiteur.html.twig"));
 
+        // line 2
+        $this->env->getRuntime("Symfony\\Component\\Form\\FormRenderer")->setTheme((isset($context["formVisiteur"]) || array_key_exists("formVisiteur", $context) ? $context["formVisiteur"] : (function () { throw new RuntimeError('Variable "formVisiteur" does not exist.', 2, $this->source); })()), [0 => "bootstrap_4_layout.html.twig"], true);
+        // line 1
         $this->parent = $this->loadTemplate("base.html.twig", "visiteur/seConnecterVisiteur.html.twig", 1);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
@@ -50,14 +53,14 @@ class __TwigTemplate_e867fe1c9e950ee5a81854ed6ce9a33662a2a22bdcf9d5674ad0e0b80df
 
     }
 
-    // line 2
+    // line 3
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        // line 3
+        // line 4
         echo "Connexion Visiteur 
 ";
         
@@ -65,7 +68,7 @@ class __TwigTemplate_e867fe1c9e950ee5a81854ed6ce9a33662a2a22bdcf9d5674ad0e0b80df
 
     }
 
-    // line 5
+    // line 6
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -80,85 +83,43 @@ class __TwigTemplate_e867fe1c9e950ee5a81854ed6ce9a33662a2a22bdcf9d5674ad0e0b80df
 
     }
 
-    // line 8
+    // line 9
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 9
+        // line 10
         echo "    
     
 <center>
     <div class=\"well\">
+    <h1> Connexion Visiteur</h1>
+
     ";
-        // line 13
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 13, $this->source); })()), 'form_start', ["attr" => ["class" => "form-horizontal"]]);
-        echo "
-    
-        <h3>
-      
-              <center>Connexion Visiteur </center> 
-        
-        </h3>
-        
-            ";
-        // line 21
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 21, $this->source); })()), 'form_start', ["attr" => ["class" => "form-horizontal"]]);
-        echo "
-            
-    
-            <div class=\"form-group\">
-                ";
-        // line 26
-        echo "                ";
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 26, $this->source); })()), "identifiant", [], "any", false, false, false, 26), 'label', ["label_attr" => ["class" => "col-sm-3 control-label"], "label" => "Login :"]);
+        // line 16
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["formVisiteur"]) || array_key_exists("formVisiteur", $context) ? $context["formVisiteur"] : (function () { throw new RuntimeError('Variable "formVisiteur" does not exist.', 16, $this->source); })()), 'form_start');
         echo "
 
-                <div class=\"col-sm-4\">
-                    ";
-        // line 29
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 29, $this->source); })()), "identifiant", [], "any", false, false, false, 29), 'widget', ["attr" => ["class" => "form-control"]]);
+    ";
+        // line 18
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formVisiteur"]) || array_key_exists("formVisiteur", $context) ? $context["formVisiteur"] : (function () { throw new RuntimeError('Variable "formVisiteur" does not exist.', 18, $this->source); })()), "login", [], "any", false, false, false, 18), 'row', ["attr" => ["placeholder" => "Login"]]);
         echo "
-                </div>
-            </div>
-            <div class=\"form-group\">
-                ";
-        // line 34
-        echo "                ";
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 34, $this->source); })()), "motDePasse", [], "any", false, false, false, 34), 'label', ["label_attr" => ["class" => "col-sm-3 control-label"], "label" => "Mot de passe :"]);
+    ";
+        // line 19
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formVisiteur"]) || array_key_exists("formVisiteur", $context) ? $context["formVisiteur"] : (function () { throw new RuntimeError('Variable "formVisiteur" does not exist.', 19, $this->source); })()), "mdp", [], "any", false, false, false, 19), 'row', ["label" => "Mot de passe", "attr" => ["placeholder" => "****"]]);
         echo "
-        
-                <div class=\"col-sm-4\">
-                    ";
-        // line 37
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 37, $this->source); })()), "motDePasse", [], "any", false, false, false, 37), 'widget', ["attr" => ["class" => "form-control"]]);
+    <button type=\"submit\" class=\"btn btn-success\">Se connecter</button>
+    <button class=\"btn btn\"><a href=\"";
+        // line 21
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("index");
+        echo "\">Retour</a></button>
+    ";
+        // line 22
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["formVisiteur"]) || array_key_exists("formVisiteur", $context) ? $context["formVisiteur"] : (function () { throw new RuntimeError('Variable "formVisiteur" does not exist.', 22, $this->source); })()), 'form_end');
         echo "
-                </div>
-            </div>
-            <br/>
-            
-            <div class=\"row\">
-                <div class=\"container\">
-                    <label class=\"col-md-4 control-label\"></label>
-                    <div class=\"col-md-4\">
-                        ";
-        // line 46
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 46, $this->source); })()), "valider", [], "any", false, false, false, 46), 'widget', ["attr" => ["class" => "btn btn-success btn-lg", "style" => "width:15em"]]);
-        echo "
-                        
-                        
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-        ";
-        // line 55
-        echo "        ";
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 55, $this->source); })()), 'form_end');
-        echo "
+
     </div>
 </center>
 ";
@@ -179,12 +140,13 @@ class __TwigTemplate_e867fe1c9e950ee5a81854ed6ce9a33662a2a22bdcf9d5674ad0e0b80df
 
     public function getDebugInfo()
     {
-        return array (  159 => 55,  148 => 46,  136 => 37,  129 => 34,  122 => 29,  115 => 26,  108 => 21,  97 => 13,  91 => 9,  84 => 8,  69 => 5,  61 => 3,  54 => 2,  37 => 1,);
+        return array (  120 => 22,  116 => 21,  111 => 19,  107 => 18,  102 => 16,  94 => 10,  87 => 9,  72 => 6,  64 => 4,  57 => 3,  49 => 1,  47 => 2,  37 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("{% extends \"base.html.twig\" %}
+{% form_theme formVisiteur 'bootstrap_4_layout.html.twig' %}
 {% block title %}
 Connexion Visiteur 
 {% endblock %}
@@ -196,52 +158,19 @@ Connexion Visiteur
     
 <center>
     <div class=\"well\">
-    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
-    
-        <h3>
-      
-              <center>Connexion Visiteur </center> 
-        
-        </h3>
-        
-            {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
-            
-    
-            <div class=\"form-group\">
-                {# Génération du label. #}
-                {{ form_label(form.identifiant, \"Login :\", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    <h1> Connexion Visiteur</h1>
 
-                <div class=\"col-sm-4\">
-                    {{ form_widget(form.identifiant, {'attr': {'class': 'form-control'}}) }}
-                </div>
-            </div>
-            <div class=\"form-group\">
-                {# Génération du label. #}
-                {{ form_label(form.motDePasse, \"Mot de passe :\", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-        
-                <div class=\"col-sm-4\">
-                    {{ form_widget(form.motDePasse, {'attr': {'class': 'form-control'}}) }}
-                </div>
-            </div>
-            <br/>
-            
-            <div class=\"row\">
-                <div class=\"container\">
-                    <label class=\"col-md-4 control-label\"></label>
-                    <div class=\"col-md-4\">
-                        {{ form_widget(form.valider, {'attr': {'class': 'btn btn-success btn-lg','style':'width:15em'}}) }}
-                        
-                        
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-        {# Fermeture de la balise <form> du formulaire HTML #}
-        {{ form_end(form) }}
+    {{ form_start(formVisiteur) }}
+
+    {{ form_row(formVisiteur.login, {'attr': {'placeholder': \"Login\"} }) }}
+    {{ form_row(formVisiteur.mdp, {'label': \"Mot de passe\",'attr': {'placeholder': \"****\"} }) }}
+    <button type=\"submit\" class=\"btn btn-success\">Se connecter</button>
+    <button class=\"btn btn\"><a href=\"{{ path('index')}}\">Retour</a></button>
+    {{ form_end(formVisiteur) }}
+
     </div>
 </center>
 {% endblock %}
-", "visiteur/seConnecterVisiteur.html.twig", "/var/www/html/GSB-Frais-Doctrine/templates/visiteur/seConnecterVisiteur.html.twig");
+", "visiteur/seConnecterVisiteur.html.twig", "/var/www/html/GSB-Frais/templates/visiteur/seConnecterVisiteur.html.twig");
     }
 }
