@@ -48,14 +48,14 @@ class VisiteurRepository extends ServiceEntityRepository
     }
     */
 
-    public function seConnecterVisiteur($identifiant,$motDePasse): ?Visiteur
+    public function seConnecterVisiteur($login,$motDePasse): ?Visiteur
     {
          $queryBuilder = $this->_em->createQueryBuilder()
             ->select('v')
             ->from(Visiteur::class, 'v')
             ->where('v.login = :identifiant')
             ->andWhere('v.mdp = :motDePasse')
-            ->setParameter('identifiant',$identifiant)
+            ->setParameter('identifiant',$login)
             ->setParameter('motDePasse',$motDePasse);
             
 
@@ -65,6 +65,16 @@ class VisiteurRepository extends ServiceEntityRepository
 
     }
     
+    public function getVisiteur ($idVis){
+        return $this->_em->createQueryBuilder()
+        ->select('v')
+        ->from(Visiteur::class, 'v')
+        ->where("v.id = :id")
+        ->setParameter('id', $idVis)
+        ->getQuery()
+        ->getResult();
+
+    }
     
     
     

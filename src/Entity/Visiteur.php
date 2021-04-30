@@ -79,6 +79,12 @@ class Visiteur
      */
     private $dateembauche = 'NULL';
 
+    function __construct( ?String $login = null, ?String $mdp = null )
+    {
+        $this->login = $login;
+        $this->mdp = $mdp;
+    }
+
     public function getId(): ?string
     {
         return $this->id;

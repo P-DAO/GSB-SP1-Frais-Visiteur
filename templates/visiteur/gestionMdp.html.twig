@@ -1,24 +1,60 @@
-<div class="container-fluid">
+{% extends "base.html.twig" %}
+{% block title %}
+	Consulter
+{% endblock %}
 
-	<div class="row">
-		<div class="col-md-4"></div>
-		<div class="col-md-4">
-			
-			{% if modifMdp == 'Nok' %}
-				<p class="alert alert-danger" role="alert">Modification du mot de passe refusée.</p>
-			{% elif modifMdp == 'Ok' %}
-				<p class="alert alert-success" role="alert">Modification du mot de passe réalisée.</p>
-			{% endif %}
-			
+
+{% block body %}
+	{% include 'visiteur/navbar.html.twig' %}
+	<br>
+	<div class="container-fluid">
+		<div class="row justify-content-md-center">
+			<div class="col-8">
+				{% if vieuxMdpInvalid == true %}
+					<div class="alert alert-dismissible alert-danger">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<strong>Mot de passe actuel est incorrect !</strong> 
+					</div>
+				{% elseif newMdpMatchPas == true %}
+					<div class="alert alert-dismissible alert-danger">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<strong>Vos champs nouveau mot de passe sont différents !</strong> 
+					</div>
+				{% endif %}
+
+				{% if sucess == true %}
+					<div class="alert alert-dismissible alert-success">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<strong>Mot de passe modifié avec SUCCES !</strong>
+					</div>
+				{% endif %}
+
+				<div class="jumbotron jumbotron-fluid">
+					<div class="container">
+						<h1 class="text-center">Gestionnaire de mot de passe</h1><br>
+						<div class="container-fluid">
+							{{ form_start(formMdp) }}
+							<div class="form-group">
+								{{ form_row(formMdp.vieuxMdp, {'attr': {'placeholder': "Saisir l'ancien mot de passe" }}) }}
+							</div>
+							<div class="form-group">
+								{{ form_row(formMdp.newMdp, {'attr': {'placeholder': "Saisir le nouveau mot de passe" }}) }}
+							</div>
+							<div class="form-group">
+								{{ form_row(formMdp.newMdpBis, {'attr': {'placeholder': "Re-saisir le nouveau mot de passe" }}) }}
+							</div>
+							<br>
+							<div id="divSave">
+								<div class="row modal-footer">
+									<button type="submit" class="btn btn-outline-success">Modifier le Mot de Passe</button>
+									<button type="reset" class="btn btn-outline-danger">Annuler</button>
+								</div>
+							</div>
+							{{ form_end(formMdp) }}
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="col-md-4"></div>
 	</div>
-    <div class="row">
-		<div class="col-md-4"></div>
-		<div class="col-md-4">
-            <h1>Gestionnaire de Mot  de passe</h1>
-            <!-- faire le formulaire -->
-
-        </div>
-    </div>
-</div
+{% endblock %}

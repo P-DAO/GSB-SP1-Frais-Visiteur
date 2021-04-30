@@ -1,0 +1,57 @@
+{% extends "base.html.twig" %}
+{% block title %}
+	Données Perso
+{% endblock %}
+
+
+{% block body %}
+	{% include 'visiteur/navbar.html.twig' %}
+	<br>
+	<div class="container-fluid">
+		<div class="row justify-content-md-center">
+			<div class="col-8">
+				<div class="jumbotron jumbotron-fluid">
+					<div class="container">
+						<h1 class="text-center">Gestionnaire des données personnelles </h1><br>
+						<div class="container-fluid">
+							{{ form_start(formPerso) }}
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div id="disabled" class="col">
+							                {{ form_row(formPerso.nom, { 'attr': {'class': 'form-control','disabled': true}}) }}
+						                </div>
+                                        <div id="disabled" class="col">
+                                            {{ form_row(formPerso.prenom, { 'attr': { 'class': 'form-control','disabled': true}}) }}
+                                        </div>
+                                        <div id="disabled" class="col">
+                                            {{ form_row(formPerso.login, { 'attr': {'class': 'form-control','disabled': true}}) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    {{ form_row(formPerso.adresse, {'attr': {'class': 'form-control'}} ) }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_row(formPerso.cp, {'label': "Code Postal", 'attr': {'class': 'form-control'}}) }}
+                                </div>
+                                <div class="form-group">
+							        {{ form_row(formPerso.ville) }}
+                                </div>
+							<div id="divSave">
+								<div class="row modal-footer">
+									<button type="submit" class="btn btn-outline-success">Modifier le Mot de Passe</button>
+									<button type="reset" class="btn btn-outline-danger">Annuler</button>
+								</div>
+							</div>
+							{{ form_end(formPerso) }}
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
+{# empty Twig template #}
