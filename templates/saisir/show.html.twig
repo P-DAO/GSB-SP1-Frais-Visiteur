@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Saisir Frais {% endblock %}
+
+{% block body %}
+{% include 'visiteur/navbar.html.twig' %}
+
+<div class="row">
+    
+    <div  class="col-lg-4"> 
+        <div  class="bd-callout bd-callout-green wh-100">
+            {#% include 'saisir/ligneFrais.html.twig' %#}
+        </div>
+        <div class="bd-callout bd-callout-green wh-100">
+            {% include 'saisir/ligneHorsFrais.html.twig' %}
+        </div>
+    </div>
+    <div class="col-lg-8">
+        <div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

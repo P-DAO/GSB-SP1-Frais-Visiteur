@@ -19,9 +19,5 @@ class EtatRepository extends ServiceEntityRepository
         parent::__construct($registry, Etat::class);
     }
 
-    public function getEtat($id)
-    {
-
-    }
     
 }

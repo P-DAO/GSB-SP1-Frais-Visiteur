@@ -51,23 +51,45 @@ class FichefraisRepository extends ServiceEntityRepository
     public function getUneFicheFrais($idVisiteur,$date) //fonction pour afficher la fiche de l'historique
     {
         return $this->createQueryBuilder( 'ff' )
-                    ->join( 'ff.idEtat', 'e')
-                    ->addSelect('e')
-                    ->where('ff.idVisiteur = :idVisiteur')
-                    ->andWhere( 'ff.mois = :mois')
-                    ->setParameter( 'idVisiteur', $idvisiteur)
-                    ->setParameter( 'date', $date)
-                    ->getQuery()
-                    ->getResult();
+                                ->join( 'ff.idetat', 'e')
+                                ->addSelect('e')
+                                ->where('ff.idvisiteur = :idVisiteur')
+                                ->andWhere( 'ff.mois = :mois')
+                                //Passage des parametres
+                                ->setParameter( 'idVisiteur', $idVisiteur)
+                                ->setParameter( 'mois', $date)
+                                ->getQuery()
+                                ->getResult();
+    }
+
+    public function getUneFicheFraisExiste($idVisiteur,$date) //fonction pour afficher la fiche de l'historique
+    {
+        try{
+            $queryBuilder = $this->createQueryBuilder( 'ff' )
+                                ->join( 'ff.idetat', 'e')
+                                ->addSelect('e')
+                                ->where('ff.idvisiteur = :idVisiteur')
+                                ->andWhere( 'ff.mois = :mois')
+                                ->setParameter( 'idVisiteur', $idVisiteur)
+                                ->setParameter( 'mois', $date)
+                                ->getQuery()
+                                ->getOneorNullResult();
+        } catch(NonUniqueResultException $e){
+            dump($e->getMessage());
+            return null;
+        }
+        return $queryBuilder;
+       
+         
     }
 
     public function getFichesFrais($idVisiteur) 
     {
         return $this->createQueryBuilder('ff')
-                    ->join('ff.idEtat', 'e')
+                    ->join('ff.idetat', 'e')
                     ->addSelect('e')
-                    ->where('ff.idVisiteur = :idVisiteur')
-                    ->setParaeter('idVisiteur', $idVisiteur)
+                    ->where('ff.idvisiteur = :idVisiteur')
+                    ->setParameter('idVisiteur', $idVisiteur)
                     ->orderBy('ff.mois')
                     ->getQuery()
                     ->getResult();

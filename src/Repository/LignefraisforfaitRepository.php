@@ -19,15 +19,20 @@ class LignefraisforfaitRepository extends ServiceEntityRepository
         parent::__construct($registry, LigneFraisForfait::class);
     }
     
-    public function getFraisForfaitDuMois($idFicheFrais)
+    public function getFraisForfaitDuMois($idVisiteur, $date)
     {
-        return $this->createQueryBuilder('lff')
-                    ->join('lff.idFicheFrais', 'ff', 'WITH', 'ff.id = :idFiche')
-                    ->join('lff.idFraisForfait', 'ffo')
-                    ->addSelect('ff')
-                    ->addSelect('ffo')
-                    ->setParameter('idFiche', $idFicheFrais )
-                    ->getQuery()
-                    ->getResult();
+        $queryBuilder = $this->_em->createQueryBuilder()
+            ->select('l')
+            ->from(LigneFraisForfait::class, 'l')
+            ->where('l.idVisiteur = :id')
+            ->andWhere('l.mois = :mois')
+            ->setParameter('id',$idVisiteur)
+            ->setParameter('mois',$date)
+            ->getQuery()
+            ->getResult();
+           
+        return $queryBuilder;
     }
+
+
 }
