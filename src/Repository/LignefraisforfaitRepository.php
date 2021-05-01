@@ -21,7 +21,7 @@ class LignefraisforfaitRepository extends ServiceEntityRepository
     
     public function getFraisForfaitDuMois($idVisiteur, $date)
     {
-        $queryBuilder = $this->createQueryBuilder('lff')
+        /*$queryBuilder = $this->createQueryBuilder('lff')
             //->select('l')
             //->from(LigneFraisForfait::class, 'lff')
             ->join('lff.idVisiteur', 'ff', 'WITH', 'ff.idVisiteur'  :idVis)
