@@ -159,6 +159,11 @@ class VisiteurController extends AbstractController
         dump($date);
 //------------------------------test pour la saisie
 
+        $ficheFrais = $em->getRepository(FicheFrais::class)->getUneFicheFrais($idVis, $date);
+        dump($ficheFrais);
+        $ligneFraisForfait = $em->getRepository(Lignefraisforfait::class)->getFraisForfaitDuMois($idVis, $date);
+        dump($ligneFraisForfait);
+
 //------------------------------
        
         return $this->render('saisir/show.html.twig',[
