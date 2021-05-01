@@ -161,7 +161,7 @@ class VisiteurController extends AbstractController
 
         $ficheFrais = $em->getRepository(FicheFrais::class)->getUneFicheFrais($idVis, $date);
         dump($ficheFrais);
-        $ligneFraisForfait = $em->getRepository(Lignefraisforfait::class)->getFraisForfaitDuMois($idVis, $date);
+        $ligneFraisForfait = $em->getRepository(LigneFraisForfait::class)->getFraisForfaitDuMois($idVis, $date);
         dump($ligneFraisForfait);
 
 //------------------------------
@@ -307,8 +307,8 @@ class VisiteurController extends AbstractController
         $em= $this->getDoctrine()->getManager();
 
         $leVisiteur = $em->getRepository(Visiteur::class)->getVisiteur($idVis);
-        //dump($leVisiteur);
-        //dump($leVisiteur[0]->getMdp());
+        dump($leVisiteur);
+        dump($leVisiteur[0]->getMdp());
 
         //Formulaire
         $formMdp = $this->createFormBuilder(array('allow_extra_field' => true))
@@ -368,6 +368,8 @@ class VisiteurController extends AbstractController
 
                 return $this->render('visiteur/gestionMdp.html.twig', [
                     'formMdp' => $formMdp->createView(),
+                    'vieuxMdpInvalid' => false,
+                    'newMdpMatchPas' => false,
                     'sucess' => true,
                 ]);
             }
@@ -376,8 +378,8 @@ class VisiteurController extends AbstractController
             return $this->render('visiteur/gestionMdp.html.twig', [
                 'formMdp' => $formMdp->createView(),
                 'vieuxMdpInvalid' => false,
-                    'sucess' => false,
-                    'newMdpMatchPas' => false,
+                'sucess' => false,
+                'newMdpMatchPas' => false,
             ]);
         }
     }
