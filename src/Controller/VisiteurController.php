@@ -72,6 +72,7 @@ class VisiteurController extends AbstractController
                     }  
                 }
                 $date = sprintf("%02d%04d", $month, $year);
+                //$date="032021";
                 //dump($date);
 
                 //existe -t-il une fiche pour ce mois
