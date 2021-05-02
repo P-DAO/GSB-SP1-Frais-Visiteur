@@ -141,7 +141,7 @@ class VisiteurController extends AbstractController
 
         $session = $request->getSession();
         $idVis = $session->get('id');
-        dump($idVis);
+        //dump($idVis);
         if(date("d") > 17 ){
             $month = date("m");
             $year = date("Y");
@@ -157,14 +157,15 @@ class VisiteurController extends AbstractController
             }  
         }
         $date = sprintf("%02d%04d", $month, $year);
-        dump($date);
+        //dump($date);
 //------------------------------test pour la saisie
 
-        $ficheFrais = $em->getRepository(FicheFrais::class)->getUneFicheFrais($idVis, $date);
+        /*$ficheFrais = $em->getRepository(FicheFrais::class)->getUneFicheFrais($idVis, $date);
         dump($ficheFrais);
         $ligneFraisForfait = $em->getRepository(LigneFraisForfait::class)->getFraisForfaitDuMois($idVis, $date);
-        dump($ligneFraisForfait);
-
+        dump($ligneFraisForfait);*/
+        
+        
 //------------------------------
        
         return $this->render('saisir/show.html.twig',[
@@ -308,8 +309,8 @@ class VisiteurController extends AbstractController
         $em= $this->getDoctrine()->getManager();
 
         $leVisiteur = $em->getRepository(Visiteur::class)->getVisiteur($idVis);
-        dump($leVisiteur);
-        dump($leVisiteur[0]->getMdp());
+        //dump($leVisiteur);
+        //dump($leVisiteur[0]->getMdp());
 
         //Formulaire
         $formMdp = $this->createFormBuilder(array('allow_extra_field' => true))
