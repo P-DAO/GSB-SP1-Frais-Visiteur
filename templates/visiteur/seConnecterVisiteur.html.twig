@@ -8,11 +8,20 @@ Connexion Visiteur
 
 {% block body %}
     
-    
+
 <center>
     <div class="well">
     <h1> Connexion Visiteur</h1>
 
+    <div class="col-8">
+    {% if erreur == true %}
+    	<div class="alert alert-dismissible alert-success">
+    		<button type="button" class="close" data-dismiss="alert">&times;</button>
+    		<strong>ERREUR Authentification!</strong>
+    	</div>
+    {% endif %}
+    </div>
+    
     {{ form_start(formVisiteur) }}
 
     {{ form_row(formVisiteur.login, {'attr': {'placeholder': "Login"} }) }}

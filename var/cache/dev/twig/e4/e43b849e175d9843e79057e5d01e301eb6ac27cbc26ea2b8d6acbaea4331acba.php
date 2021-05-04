@@ -92,32 +92,46 @@ class __TwigTemplate_e867fe1c9e950ee5a81854ed6ce9a33662a2a22bdcf9d5674ad0e0b80df
 
         // line 10
         echo "    
-    
+
 <center>
     <div class=\"well\">
     <h1> Connexion Visiteur</h1>
 
+    <div class=\"col-8\">
     ";
-        // line 16
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["formVisiteur"]) || array_key_exists("formVisiteur", $context) ? $context["formVisiteur"] : (function () { throw new RuntimeError('Variable "formVisiteur" does not exist.', 16, $this->source); })()), 'form_start');
+        // line 17
+        if ((0 === twig_compare((isset($context["erreur"]) || array_key_exists("erreur", $context) ? $context["erreur"] : (function () { throw new RuntimeError('Variable "erreur" does not exist.', 17, $this->source); })()), true))) {
+            // line 18
+            echo "    \t<div class=\"alert alert-dismissible alert-success\">
+    \t\t<button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>
+    \t\t<strong>ERREUR Authentification!</strong>
+    \t</div>
+    ";
+        }
+        // line 23
+        echo "    </div>
+    
+    ";
+        // line 25
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["formVisiteur"]) || array_key_exists("formVisiteur", $context) ? $context["formVisiteur"] : (function () { throw new RuntimeError('Variable "formVisiteur" does not exist.', 25, $this->source); })()), 'form_start');
         echo "
 
     ";
-        // line 18
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formVisiteur"]) || array_key_exists("formVisiteur", $context) ? $context["formVisiteur"] : (function () { throw new RuntimeError('Variable "formVisiteur" does not exist.', 18, $this->source); })()), "login", [], "any", false, false, false, 18), 'row', ["attr" => ["placeholder" => "Login"]]);
+        // line 27
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formVisiteur"]) || array_key_exists("formVisiteur", $context) ? $context["formVisiteur"] : (function () { throw new RuntimeError('Variable "formVisiteur" does not exist.', 27, $this->source); })()), "login", [], "any", false, false, false, 27), 'row', ["attr" => ["placeholder" => "Login"]]);
         echo "
     ";
-        // line 19
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formVisiteur"]) || array_key_exists("formVisiteur", $context) ? $context["formVisiteur"] : (function () { throw new RuntimeError('Variable "formVisiteur" does not exist.', 19, $this->source); })()), "mdp", [], "any", false, false, false, 19), 'row', ["label" => "Mot de passe", "attr" => ["placeholder" => "****"]]);
+        // line 28
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formVisiteur"]) || array_key_exists("formVisiteur", $context) ? $context["formVisiteur"] : (function () { throw new RuntimeError('Variable "formVisiteur" does not exist.', 28, $this->source); })()), "mdp", [], "any", false, false, false, 28), 'row', ["label" => "Mot de passe", "attr" => ["placeholder" => "****"]]);
         echo "
     <button type=\"submit\" class=\"btn btn-success\">Se connecter</button>
     <button class=\"btn btn\"><a href=\"";
-        // line 21
+        // line 30
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("index");
         echo "\">Retour</a></button>
     ";
-        // line 22
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["formVisiteur"]) || array_key_exists("formVisiteur", $context) ? $context["formVisiteur"] : (function () { throw new RuntimeError('Variable "formVisiteur" does not exist.', 22, $this->source); })()), 'form_end');
+        // line 31
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["formVisiteur"]) || array_key_exists("formVisiteur", $context) ? $context["formVisiteur"] : (function () { throw new RuntimeError('Variable "formVisiteur" does not exist.', 31, $this->source); })()), 'form_end');
         echo "
 
     </div>
@@ -140,7 +154,7 @@ class __TwigTemplate_e867fe1c9e950ee5a81854ed6ce9a33662a2a22bdcf9d5674ad0e0b80df
 
     public function getDebugInfo()
     {
-        return array (  120 => 22,  116 => 21,  111 => 19,  107 => 18,  102 => 16,  94 => 10,  87 => 9,  72 => 6,  64 => 4,  57 => 3,  49 => 1,  47 => 2,  37 => 1,);
+        return array (  134 => 31,  130 => 30,  125 => 28,  121 => 27,  116 => 25,  112 => 23,  105 => 18,  103 => 17,  94 => 10,  87 => 9,  72 => 6,  64 => 4,  57 => 3,  49 => 1,  47 => 2,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -155,11 +169,20 @@ Connexion Visiteur
 
 {% block body %}
     
-    
+
 <center>
     <div class=\"well\">
     <h1> Connexion Visiteur</h1>
 
+    <div class=\"col-8\">
+    {% if erreur == true %}
+    \t<div class=\"alert alert-dismissible alert-success\">
+    \t\t<button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>
+    \t\t<strong>ERREUR Authentification!</strong>
+    \t</div>
+    {% endif %}
+    </div>
+    
     {{ form_start(formVisiteur) }}
 
     {{ form_row(formVisiteur.login, {'attr': {'placeholder': \"Login\"} }) }}

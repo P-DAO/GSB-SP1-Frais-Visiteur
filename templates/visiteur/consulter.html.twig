@@ -73,7 +73,7 @@
 						<tbody>
 							{#BOUCLE POUR FAIRE DEFILER LES RAPPORTS ET LES AFFICHERS#}
 							{% for laFiche in fiches %}
-								<tr class="table-light" id="selection" style="cursor: pointer" onclick="location.href='{{ path( 'consulter') }}">
+								<tr class="table-light" id="selection" style="cursor: pointer" onclick="location.href='{{ path( 'consulter', {'date': laFiche['mois']}) }}">
 									<th scope="row">{{ loop.index }}</th>
 									<td>{{ laFiche['mois'] }}</td>
 									<td>{{ laFiche['nbjustificatifs'] }}</td>

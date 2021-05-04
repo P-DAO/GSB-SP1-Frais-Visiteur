@@ -10,6 +10,12 @@
 	<div class="container-fluid">
 		<div class="row justify-content-md-center">
 			<div class="col-8">
+			{% if modifFait == true %}
+				<div class="alert alert-dismissible alert-success">
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+					<strong>Modifications avec SUCCES !</strong>
+				</div>
+			{% endif %}
 				<div class="jumbotron jumbotron-fluid">
 					<div class="container">
 						<h1 class="text-center">Gestionnaire des données personnelles </h1><br>
@@ -39,7 +45,7 @@
                                 </div>
 							<div id="divSave">
 								<div class="row modal-footer">
-									<button type="submit" class="btn btn-outline-success">Modifier le Mot de Passe</button>
+									<button type="submit" class="btn btn-outline-success">Modifier les informations</button>
 									<button type="reset" class="btn btn-outline-danger">Annuler</button>
 								</div>
 							</div>

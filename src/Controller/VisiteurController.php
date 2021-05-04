@@ -51,7 +51,7 @@ class VisiteurController extends AbstractController
             $mdp=$formVisiteur['mdp']->getData();
             $visiteur = $doctrine->getRepository(Visiteur::class)->seConnecterVisiteur($login, $mdp);
             //dump($visiteur);
-            $idVis = $visiteur->getId();
+            
 //-------------------     test de la crétion de la fiche à la connexion 
             if(!empty($visiteur)){
                 $idVis = $visiteur->getId();
@@ -125,13 +125,14 @@ class VisiteurController extends AbstractController
             else{
                 return $this->render('visiteur/seConnecterVisiteur.html.twig', [
                     'formVisiteur'=>$formVisiteur->createView(), 
-                    'erreur' => false,  
+                    'erreur' => true,  
                 ]);
             }
         }
 
         return $this->render('visiteur/seConnecterVisiteur.html.twig', [
-            'formVisiteur'=>$formVisiteur->createView(),   
+            'formVisiteur'=>$formVisiteur->createView(), 
+            'erreur' => false,    
         ]);
     }
 
@@ -294,9 +295,17 @@ class VisiteurController extends AbstractController
     }
     //Consultation de la fiche sélectionnée
     public function consulter(Request $request, $date){
-        $session = $request->get('id');
+        $session = $request->getSession();
         dump($session);
         dump($date);
+
+        $idVis = $session->get('id');
+
+        //Récupération doctrine
+        $em->$this->getDoctrine()->getManager();
+
+        //Récupération de la fiche de frais
+        $fraisMois = $em->getRepository(FicheFrais::class)->getUneFicheFrais($idVis,$date);
 
         return $this->render('visiteur/consulter.html.twig');
     }
@@ -427,11 +436,15 @@ class VisiteurController extends AbstractController
 
             $em->flush();
 
-            return $this->redirectToRoute('personnelles');
+            return $this->render('visiteur/visiteurPerso.html.twig',[
+                'formPerso' => $formPerso->createView(),
+                'modifFait' => true,
+            ]);
         }
 
         return $this->render('visiteur/visiteurPerso.html.twig',[
             'formPerso' => $formPerso->createView(),
+            'modifFait' => false,
         ]);
     }
 
