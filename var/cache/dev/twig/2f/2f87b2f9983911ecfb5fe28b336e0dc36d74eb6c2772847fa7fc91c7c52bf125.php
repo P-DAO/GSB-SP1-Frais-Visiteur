@@ -206,6 +206,6 @@ class __TwigTemplate_1e14a34cc540eff08b33033ab89d2b70a80f3d9bf80753a6dc6a3ebeb25
     {% endfor %}
     </tbody>
 </table>
-", "@Twig/Exception/logs.html.twig", "/var/www/html/GSB-Frais/vendor/symfony/twig-bundle/Resources/views/Exception/logs.html.twig");
+", "@Twig/Exception/logs.html.twig", "/var/www/html/GSB-Frais-VF/vendor/symfony/twig-bundle/Resources/views/Exception/logs.html.twig");
     }
 }

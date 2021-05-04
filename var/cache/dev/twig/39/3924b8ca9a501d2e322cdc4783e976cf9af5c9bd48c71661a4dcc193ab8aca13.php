@@ -59,6 +59,6 @@ class __TwigTemplate_b14c55388b16279cfa211cb5a060f924cbf8a4fd0e575c9c245d65282f0
     {
         return new Source("<?php if (!empty(\$id)): ?>id=\"<?php echo \$view->escape(\$id) ?>\"<?php endif ?>
 <?php echo \$attr ? ' '.\$view['form']->block(\$form, 'attributes') : '' ?>
-", "@Framework/Form/widget_container_attributes.html.php", "/var/www/html/GSB-Frais/vendor/symfony/framework-bundle/Resources/views/Form/widget_container_attributes.html.php");
+", "@Framework/Form/widget_container_attributes.html.php", "/var/www/html/GSB-Frais-VF/vendor/symfony/framework-bundle/Resources/views/Form/widget_container_attributes.html.php");
     }
 }

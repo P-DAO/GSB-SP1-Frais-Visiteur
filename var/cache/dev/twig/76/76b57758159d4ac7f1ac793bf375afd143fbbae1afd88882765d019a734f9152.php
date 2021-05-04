@@ -106,6 +106,6 @@ class __TwigTemplate_cb4ab1faac327b45ca27bd052f2ac7c14261431d895444f38611dc59c79
     </exception>
 {% endfor %}
 </error>
-", "@Twig/Exception/exception.xml.twig", "/var/www/html/GSB-Frais/vendor/symfony/twig-bundle/Resources/views/Exception/exception.xml.twig");
+", "@Twig/Exception/exception.xml.twig", "/var/www/html/GSB-Frais-VF/vendor/symfony/twig-bundle/Resources/views/Exception/exception.xml.twig");
     }
 }

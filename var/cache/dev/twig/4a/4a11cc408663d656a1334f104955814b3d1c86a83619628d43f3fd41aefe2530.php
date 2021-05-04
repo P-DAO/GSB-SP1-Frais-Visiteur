@@ -77,6 +77,6 @@ class __TwigTemplate_e7be7201729a54283de60df90793b804c4cb490a8fe0a7c6371e2ed8c77
 <?xml version=\"1.0\" encoding=\"{{ _charset }}\" ?>
 
 <error code=\"{{ status_code }}\" message=\"{{ status_text }}\" />
-", "@Twig/Exception/error.xml.twig", "/var/www/html/GSB-Frais/vendor/symfony/twig-bundle/Resources/views/Exception/error.xml.twig");
+", "@Twig/Exception/error.xml.twig", "/var/www/html/GSB-Frais-VF/vendor/symfony/twig-bundle/Resources/views/Exception/error.xml.twig");
     }
 }

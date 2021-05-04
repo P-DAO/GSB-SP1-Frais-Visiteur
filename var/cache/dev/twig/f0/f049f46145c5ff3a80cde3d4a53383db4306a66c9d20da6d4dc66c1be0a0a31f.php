@@ -59,6 +59,6 @@ class __TwigTemplate_7acdf3da123a40c8dfc6db1ccac26963daf7413a598d951e637cd36a679
     {
         return new Source("<?php \$symbol = false !== \$symbol ? (\$symbol ? ' '.\$symbol : ' %') : '' ?>
 <?php echo \$view['form']->block(\$form, 'form_widget_simple', ['type' => isset(\$type) ? \$type : 'text']).\$view->escape(\$symbol) ?>
-", "@Framework/Form/percent_widget.html.php", "/var/www/html/GSB-Frais/vendor/symfony/framework-bundle/Resources/views/Form/percent_widget.html.php");
+", "@Framework/Form/percent_widget.html.php", "/var/www/html/GSB-Frais-VF/vendor/symfony/framework-bundle/Resources/views/Form/percent_widget.html.php");
     }
 }

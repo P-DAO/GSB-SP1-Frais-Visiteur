@@ -98,6 +98,6 @@ class __TwigTemplate_0fdbb1e5123cdb5539c4691192e27e7d18fa727bb3491e122f5aaeb6921
   {{ include('@Twig/Exception/trace.txt.twig', { trace: trace }, with_context = false) }}
 {% endfor %}
 {% endif %}
-", "@Twig/Exception/traces.txt.twig", "/var/www/html/GSB-Frais/vendor/symfony/twig-bundle/Resources/views/Exception/traces.txt.twig");
+", "@Twig/Exception/traces.txt.twig", "/var/www/html/GSB-Frais-VF/vendor/symfony/twig-bundle/Resources/views/Exception/traces.txt.twig");
     }
 }

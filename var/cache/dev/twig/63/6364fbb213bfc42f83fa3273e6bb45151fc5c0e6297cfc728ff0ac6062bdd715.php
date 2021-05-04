@@ -57,6 +57,6 @@ class __TwigTemplate_fd30a61f775a0462dd9f03b5e6a35ae3151ae2ead09e87db9cd41e36535
     public function getSourceContext()
     {
         return new Source("<?php echo \$view['form']->block(\$form, 'widget_container_attributes') ?>
-", "@Framework/Form/container_attributes.html.php", "/var/www/html/GSB-Frais/vendor/symfony/framework-bundle/Resources/views/Form/container_attributes.html.php");
+", "@Framework/Form/container_attributes.html.php", "/var/www/html/GSB-Frais-VF/vendor/symfony/framework-bundle/Resources/views/Form/container_attributes.html.php");
     }
 }

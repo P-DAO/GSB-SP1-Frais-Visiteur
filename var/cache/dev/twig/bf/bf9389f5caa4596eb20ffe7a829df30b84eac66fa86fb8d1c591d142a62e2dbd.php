@@ -71,6 +71,6 @@ class __TwigTemplate_9f34d98bb693f7d373bf24d4bebe4e2e27761eab1dc8c202f9555d19bb3
     : \$view['form']->humanize(\$name); } ?>
 <label<?php if (\$label_attr) { echo ' '.\$view['form']->block(\$form, 'attributes', ['attr' => \$label_attr]); } ?>><?php echo \$view->escape(false !== \$translation_domain ? \$view['translator']->trans(\$label, \$label_translation_parameters, \$translation_domain) : \$label) ?></label>
 <?php endif ?>
-", "@Framework/Form/form_label.html.php", "/var/www/html/GSB-Frais/vendor/symfony/framework-bundle/Resources/views/Form/form_label.html.php");
+", "@Framework/Form/form_label.html.php", "/var/www/html/GSB-Frais-VF/vendor/symfony/framework-bundle/Resources/views/Form/form_label.html.php");
     }
 }

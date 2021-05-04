@@ -57,6 +57,6 @@ class __TwigTemplate_d2c211cd30878a8183b3c17b083300ce2443811b5165d56695fd40b9587
     public function getSourceContext()
     {
         return new Source("<?php echo \$view['form']->block(\$form, 'form_widget_simple', ['type' => isset(\$type) ? \$type : 'text']) ?>
-", "@Framework/Form/number_widget.html.php", "/var/www/html/GSB-Frais/vendor/symfony/framework-bundle/Resources/views/Form/number_widget.html.php");
+", "@Framework/Form/number_widget.html.php", "/var/www/html/GSB-Frais-VF/vendor/symfony/framework-bundle/Resources/views/Form/number_widget.html.php");
     }
 }

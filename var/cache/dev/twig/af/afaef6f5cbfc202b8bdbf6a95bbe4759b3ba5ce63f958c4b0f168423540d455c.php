@@ -184,6 +184,6 @@ class __TwigTemplate_6cf485eb71febc17f8846edeccb4a6d9730278d2ca72eba9302756abad2
 \t\t{% endblock %}
 \t</body>
 </html>
-", "base.html.twig", "/var/www/html/GSB-Frais/templates/base.html.twig");
+", "base.html.twig", "/var/www/html/GSB-Frais-VF/templates/base.html.twig");
     }
 }

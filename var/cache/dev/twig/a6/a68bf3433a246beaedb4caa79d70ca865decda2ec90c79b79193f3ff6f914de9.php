@@ -83,6 +83,6 @@ The server returned a \"{{ status_code }} {{ status_text }}\".
 
 Something is broken. Please let us know what you were doing when this error occurred.
 We will fix it as soon as possible. Sorry for any inconvenience caused.
-", "@Twig/Exception/error.txt.twig", "/var/www/html/GSB-Frais/vendor/symfony/twig-bundle/Resources/views/Exception/error.txt.twig");
+", "@Twig/Exception/error.txt.twig", "/var/www/html/GSB-Frais-VF/vendor/symfony/twig-bundle/Resources/views/Exception/error.txt.twig");
     }
 }

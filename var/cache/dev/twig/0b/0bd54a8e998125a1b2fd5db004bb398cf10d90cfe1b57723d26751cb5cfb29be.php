@@ -65,6 +65,6 @@ class __TwigTemplate_f5ffcd76ccc0525a188d19ae4a72e06d40c0a2bd7943163349bd83b2b35
 <?php else: ?>
 <?php echo \$view['form']->block(\$form, 'choice_widget_collapsed') ?>
 <?php endif ?>
-", "@Framework/Form/choice_widget.html.php", "/var/www/html/GSB-Frais/vendor/symfony/framework-bundle/Resources/views/Form/choice_widget.html.php");
+", "@Framework/Form/choice_widget.html.php", "/var/www/html/GSB-Frais-VF/vendor/symfony/framework-bundle/Resources/views/Form/choice_widget.html.php");
     }
 }
