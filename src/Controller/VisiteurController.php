@@ -51,7 +51,7 @@ class VisiteurController extends AbstractController
             $mdp=$formVisiteur['mdp']->getData();
             $visiteur = $doctrine->getRepository(Visiteur::class)->seConnecterVisiteur($login, $mdp);
             //dump($visiteur);
-            $idVis = $visiteur->getId();
+            
 //-------------------     test de la crétion de la fiche à la connexion 
             if(!empty($visiteur)){
                 $idVis = $visiteur->getId();
@@ -176,6 +176,7 @@ class VisiteurController extends AbstractController
     public function seDeconnecter(Request $request){
         $session = $request->getSession();
         $session -> clear();
+        
         return $this->redirect('connexion');
     }
 
