@@ -177,6 +177,7 @@ class VisiteurController extends AbstractController
     public function seDeconnecter(Request $request){
         $session = $request->getSession();
         $session -> clear();
+        
         return $this->redirect('connexion');
     }
 

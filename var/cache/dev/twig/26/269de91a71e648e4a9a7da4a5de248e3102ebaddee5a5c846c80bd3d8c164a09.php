@@ -239,6 +239,6 @@ class __TwigTemplate_dbee6bfd62dd9a7cd23f0511d662de96833607fa37739cdb3437f49257b
     </body>
 </html>
 {% block after_html %}{% endblock %}
-", "@Twig/layout.html.twig", "/var/www/html/GSB-Frais/vendor/symfony/twig-bundle/Resources/views/layout.html.twig");
+", "@Twig/layout.html.twig", "/var/www/html/GSB-Frais-VF/vendor/symfony/twig-bundle/Resources/views/layout.html.twig");
     }
 }

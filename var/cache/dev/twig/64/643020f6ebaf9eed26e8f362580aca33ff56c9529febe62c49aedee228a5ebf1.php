@@ -57,6 +57,6 @@ class __TwigTemplate_31ebaf74244a7349c1073a0d2c1319ba543bcfe52613890c669438aa7f9
     public function getSourceContext()
     {
         return new Source("<?php echo \$view['form']->block(\$form, 'choice_widget_options') ?>
-", "@Framework/Form/choice_options.html.php", "/var/www/html/GSB-Frais/vendor/symfony/framework-bundle/Resources/views/Form/choice_options.html.php");
+", "@Framework/Form/choice_options.html.php", "/var/www/html/GSB-Frais-VF/vendor/symfony/framework-bundle/Resources/views/Form/choice_options.html.php");
     }
 }

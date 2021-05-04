@@ -77,6 +77,6 @@ class __TwigTemplate_f5cae5316c0e38e3ca5c5b4a6c6959c38a6545e89dfb25a6ac69967599e
 {{ status_code }} {{ status_text }}
 
 */
-", "@Twig/Exception/error.js.twig", "/var/www/html/GSB-Frais/vendor/symfony/twig-bundle/Resources/views/Exception/error.js.twig");
+", "@Twig/Exception/error.js.twig", "/var/www/html/GSB-Frais-VF/vendor/symfony/twig-bundle/Resources/views/Exception/error.js.twig");
     }
 }
